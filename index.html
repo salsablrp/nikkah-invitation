@@ -891,47 +891,6 @@
     background: var(--deep-brown);
   }
 
-  /* ── IG FILTER ── */
-  #igfilter {
-    background: var(--parchment);
-    text-align: center;
-  }
-
-  .filter-box {
-    border: 1px solid var(--light-gold);
-    padding: 2.5rem 2rem;
-  }
-
-  .filter-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-    text-align: center;
-  }
-
-  .filter-step-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  .filter-step-title {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--deep-brown);
-    margin-bottom: 0.3rem;
-  }
-
-  .filter-step-desc {
-    font-size: 0.75rem;
-    color: var(--text-light);
-    line-height: 1.6;
-  }
-
   /* ── WISHES ── */
   #wishes {
     background: var(--deep-brown);
@@ -1169,7 +1128,6 @@
     }
 
     .events-grid { grid-template-columns: 1fr; }
-    .filter-steps { grid-template-columns: 1fr; }
     .countdown-sep { display: none; }
   }
 
@@ -1508,43 +1466,6 @@
     </div>
   </section>
 
-  <!-- IG FILTER -->
-  <section id="igfilter">
-    <div class="section-inner reveal">
-      <p class="section-label" data-i18n="filter-label">Rayakan Bersama Kami</p>
-      <h2 class="section-title" data-i18n="filter-title">Instagram Filter</h2>
-      <div class="line-divider"><span>✨</span></div>
-
-      <div class="filter-box">
-        <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1rem; color:var(--text-mid); line-height:1.8; margin-bottom:1.5rem;" data-i18n="filter-desc">
-          Gunakan filter Instagram spesial kami dan bagikan momen kebersamaan di hari pernikahan kami!
-        </p>
-
-        <a href="#" id="filter-link" class="livestream-btn" style="background:var(--terracotta); display:inline-flex; margin-bottom:2rem;" data-i18n="filter-btn">
-          📸 Coba Filter IG
-        </a>
-
-        <div class="filter-steps">
-          <div>
-            <p class="filter-step-num">01</p>
-            <p class="filter-step-title" data-i18n="filter-step1-title">Buka Instagram</p>
-            <p class="filter-step-desc" data-i18n="filter-step1-desc">Tap tombol di atas atau cari filter di Stories Instagram kamu</p>
-          </div>
-          <div>
-            <p class="filter-step-num">02</p>
-            <p class="filter-step-title" data-i18n="filter-step2-title">Pilih Filter</p>
-            <p class="filter-step-desc" data-i18n="filter-step2-desc">Cari <strong>#SerhatWithASideOfSalsa</strong> di pencarian filter</p>
-          </div>
-          <div>
-            <p class="filter-step-num">03</p>
-            <p class="filter-step-title" data-i18n="filter-step3-title">Bagikan!</p>
-            <p class="filter-step-desc" data-i18n="filter-step3-desc">Foto & tag kami dengan hashtag <strong>#SerhatWithASideOfSalsa</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- WISHES -->
   <section id="wishes">
     <div class="section-inner reveal">
@@ -1653,16 +1574,6 @@ const translations = {
     'stream-desc': 'Tidak bisa hadir langsung? Kami tetap ingin kamu menjadi bagian dari hari bahagia ini.<br>Saksikan momen sakral kami secara langsung melalui tautan berikut.',
     'stream-btn': '▶ Tonton Live',
     'stream-note': '*Link akan diaktifkan pada hari pelaksanaan',
-    'filter-label': 'Rayakan Bersama Kami',
-    'filter-title': 'Instagram Filter',
-    'filter-desc': 'Gunakan filter Instagram spesial kami dan bagikan momen kebersamaan di hari pernikahan kami!',
-    'filter-btn': '📸 Coba Filter IG',
-    'filter-step1-title': 'Buka Instagram',
-    'filter-step1-desc': 'Tap tombol di atas atau cari filter di Stories Instagram kamu',
-    'filter-step2-title': 'Pilih Filter',
-    'filter-step2-desc': 'Cari #SerhatWithASideOfSalsa di pencarian filter',
-    'filter-step3-title': 'Bagikan!',
-    'filter-step3-desc': 'Foto & tag kami dengan hashtag #SerhatWithASideOfSalsa',
     'wishes-label': 'Doa & Ucapan',
     'wishes-title': 'Kirim Doa untuk Kami',
     'wish-name-placeholder': 'Nama kamu...',
@@ -1725,16 +1636,6 @@ const translations = {
     'stream-desc': 'Can\'t make it in person? We still want you to be part of our special day.<br>Watch our sacred moment live through the link below.',
     'stream-btn': '▶ Watch Live',
     'stream-note': '*Link will be activated on the day of the event',
-    'filter-label': 'Celebrate With Us',
-    'filter-title': 'Instagram Filter',
-    'filter-desc': 'Use our special Instagram filter and share the celebration on our wedding day!',
-    'filter-btn': '📸 Try IG Filter',
-    'filter-step1-title': 'Open Instagram',
-    'filter-step1-desc': 'Tap the button above or search for the filter in your Instagram Stories',
-    'filter-step2-title': 'Select Filter',
-    'filter-step2-desc': 'Search #SerhatWithASideOfSalsa in the filter search',
-    'filter-step3-title': 'Share!',
-    'filter-step3-desc': 'Photo & tag us with hashtag #SerhatWithASideOfSalsa',
     'wishes-label': 'Prayers & Wishes',
     'wishes-title': 'Send Your Blessings',
     'wish-name-placeholder': 'Your name...',
@@ -1796,16 +1697,6 @@ const translations = {
     'stream-desc': 'Bizzat katılamıyor musunuz? Sizi yine de bu özel günümüzün bir parçası yapmak istiyoruz.<br>Kutsal anımızı aşağıdaki bağlantı üzerinden canlı olarak izleyin.',
     'stream-btn': '▶ Canlı İzle',
     'stream-note': '*Bağlantı etkinlik günü aktif edilecektir',
-    'filter-label': 'Bizimle Kutlayın',
-    'filter-title': 'Instagram Filtresi',
-    'filter-desc': 'Özel Instagram filtremizi kullanın ve düğün günümüzde coşkuyu paylaşın!',
-    'filter-btn': '📸 Filtreyi Dene',
-    'filter-step1-title': "Instagram'ı Aç",
-    'filter-step1-desc': 'Yukarıdaki butona dokun veya Instagram Hikayelerinden filtre ara',
-    'filter-step2-title': 'Filtre Seç',
-    'filter-step2-desc': 'Filtre aramasında #SerhatWithASideOfSalsa ara',
-    'filter-step3-title': 'Paylaş!',
-    'filter-step3-desc': '#SerhatWithASideOfSalsa etiketiyle fotoğraf çek ve bizi etiketle',
     'wishes-label': 'Dua ve Dilekler',
     'wishes-title': 'Dua Gönder',
     'wish-name-placeholder': 'Adın...',
