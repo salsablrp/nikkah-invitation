@@ -308,19 +308,25 @@
   .line-divider {
     display: flex;
     align-items: center;
+    justify-content: center; /* Forces absolute center alignment */
+    width: 100%;             /* Browser fix: explicitly sets the width */
+    max-width: 400px;        /* Keeps the lines looking elegant, not too stretched */
+    margin: 1.5rem auto;     /* Centers the entire box */
     gap: 1rem;
-    margin: 1.5rem 0;
   }
+
   .line-divider::before, .line-divider::after {
     content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--warm-brown), transparent);
-    opacity: 0.7;
+    display: block;          /* Browser fix: forces empty elements to render */
+    flex: 1 1 0%;            /* Browser fix: forces strict, equal growing */
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--warm-brown) 10%, var(--warm-brown) 90%, transparent);
+    opacity: 0.8;
   }
+
   .line-divider span {
     color: var(--gold);
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   /* ── QURAN SECTION ── */
