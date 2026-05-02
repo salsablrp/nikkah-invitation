@@ -316,7 +316,7 @@
     flex: 1;
     height: 1px;
     background: linear-gradient(to right, transparent, var(--warm-brown), transparent);
-    opacity: 0.4;
+    opacity: 0.7;
   }
   .line-divider span {
     color: var(--gold);
@@ -1729,11 +1729,12 @@ const translations = {
 };
 
 let currentLang = 'id';
-let countdownTarget = new Date('2026-06-11T19:00:00+03:00'); // Istanbul time (UTC+3)
+let countdownTarget = new Date('2026-06-13T19:00:00+03:00'); // Istanbul time (UTC+3)
 let countdownInterval;
 
 function setLang(lang) {
   currentLang = lang;
+  document.documentElement.lang = lang;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
 
