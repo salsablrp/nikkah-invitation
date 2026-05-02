@@ -1598,7 +1598,7 @@ const translations = {
     'close-relative': 'Hanya Keluarga Dekat',
     'time-id': '22:00 WIB',
     'stream-note': '*Link akan diaktifkan pada hari pelaksanaan',
-    'countdown-date-label':'13 Juni 2026 · Ijab Kabul dan Perayaan'
+    'countdown-date-label': '13 Juni 2026 · Ijab Kabul dan Perayaan'
   },
   en: {
     'cover-subtitle': 'Wedding Invitation',
@@ -1661,7 +1661,7 @@ const translations = {
     'close-relative': 'Only Close Relatives',
     'time-id': '6pm UTC+3 (10pm UTC+7)',
     'stream-note': '*The link will be activated on the day of the event',
-    'countdown-date-label':'13 Haziran 2026 · Wedding and Celebration'
+    'countdown-date-label': '13 Haziran 2026 · Wedding and Celebration'
   },
   tr: {
     'cover-subtitle': 'Düğün Davetiyesi',
@@ -1724,13 +1724,11 @@ const translations = {
     'close-relative': 'Sadece Yakın Aile',
     'time-id': '18:00',
     'stream-note': '*Bağlantı, etkinlik günü aktif hale getirilecektir',
-    'countdown-date-label':'13 Haziran 2026 · Nikkah & Düğün'
+    'countdown-date-label': '13 Haziran 2026 · Nikkah & Düğün'
   }
 };
 
 let currentLang = 'id';
-let countdownTarget = new Date('2026-06-13T19:00:00+03:00'); // Istanbul time (UTC+3)
-let countdownInterval;
 
 function setLang(lang) {
   currentLang = lang;
