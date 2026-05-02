@@ -1493,6 +1493,14 @@
 </audio>
 
 <script>
+// ── SCROLL RESTORATION FIX ──
+// Tells the browser not to jump down the page on refresh
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+// Forces the page back to the very top when reloaded
+window.scrollTo(0, 0);
+
 // ── TRANSLATIONS ──
 const translations = {
   id: {
