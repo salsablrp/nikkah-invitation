@@ -1546,21 +1546,28 @@ if ('scrollRestoration' in history) {
 // Forces the page back to the very top when reloaded
 window.scrollTo(0, 0);
 
-// ── PERSONALIZED GUEST GREETING ──
+// ── PERSONALIZED GUEST GREETING & AUTO-LANGUAGE ──
 document.addEventListener("DOMContentLoaded", () => {
-  // Look at the web address for a "?to=" parameter
+  // Look at the web address for parameters
   const urlParams = new URLSearchParams(window.location.search);
   const guest = urlParams.get('to');
+  const langPref = urlParams.get('lang'); // Looks for &lang=en, id, or tr
 
-  // If a name exists in the link, display it!
+  // 1. If a language preference is in the URL, translate the cover instantly!
+  if (langPref && translations[langPref]) {
+    setLang(langPref); 
+  } else {
+    // If no language is in the URL, default to Indonesian so the greeting is correct
+    setLang('id');
+  }
+
+  // 2. If a guest name exists, display it!
   if (guest) {
     const greetingBox = document.getElementById('guest-greeting-box');
     const nameDisplay = document.getElementById('guest-name-display');
     
-    // Unhide the box
     greetingBox.style.display = 'block';
-    
-    // Clean up the name (removes %20 or + symbols and turns them into spaces)
+    // Clean up the name (removes %20 or + symbols)
     nameDisplay.innerText = guest.replace(/\+/g, ' ');
   }
 });
