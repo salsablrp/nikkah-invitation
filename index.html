@@ -36,19 +36,25 @@
     overflow-x: hidden;
   }
 
+  /* Locking scroll initially */
+  body.locked {
+    overflow: hidden;
+    height: 100vh;
+  }
+
   /* ── COVER ── */
   #cover {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
+    position: relative;
+    width: 100%;
+    height: 100vh;
     background: var(--deep-brown);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden; /* Keeps leaves contained */
+    z-index: 10;
   }
-  #cover.hidden { opacity: 0; visibility: hidden; }
 
   .cover-bg {
     position: absolute;
@@ -62,6 +68,7 @@
     position: relative;
     text-align: center;
     padding: 2rem;
+    z-index: 2;
   }
 
   .cover-ornament {
@@ -122,20 +129,43 @@
     animation: fadeUp 1s 0.9s forwards;
   }
 
+  /* Language Selection on Cover */
+  .lang-select-wrapper {
+    margin-top: 3rem;
+    opacity: 0;
+    animation: fadeUp 1s 1.2s forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lang-select-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--light-gold);
+    opacity: 0.7;
+  }
+
+  .lang-btn-group {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
   .open-btn {
-    margin-top: 2.5rem;
-    padding: 0.9rem 2.5rem;
+    padding: 0.8rem 1.5rem;
     background: transparent;
     border: 1px solid var(--gold);
     color: var(--gold);
     font-family: 'Jost', sans-serif;
     font-size: 0.75rem;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
-    opacity: 0;
-    animation: fadeUp 1s 1.2s forwards;
     position: relative;
     overflow: hidden;
   }
@@ -162,7 +192,7 @@
     font-size: 1.5rem;
   }
 
-  /* ── LANGUAGE SWITCHER ── */
+  /* ── LANGUAGE SWITCHER (TOP RIGHT) ── */
   #lang-switcher {
     position: fixed;
     top: 1.2rem;
@@ -171,9 +201,22 @@
     display: flex;
     gap: 0.4rem;
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transform: translateY(-20px);
+    pointer-events: none;
   }
-  #lang-switcher.visible { opacity: 1; }
+  
+  #lang-switcher.visible { 
+    opacity: 1; 
+    pointer-events: auto;
+    animation: dropAndPulse 1.2s ease forwards;
+  }
+
+  @keyframes dropAndPulse {
+    0% { transform: translateY(-20px); }
+    40% { transform: translateY(0); box-shadow: 0 0 0 0 rgba(201,168,76, 0.7); border-radius: 4px; }
+    70% { box-shadow: 0 0 0 15px rgba(201,168,76, 0); border-radius: 4px; }
+    100% { transform: translateY(0); box-shadow: none; }
+  }
 
   .lang-btn {
     padding: 0.35rem 0.7rem;
@@ -514,6 +557,75 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /* Wrapper to hold the arrows relative to the photos */
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .timeline-photo-container {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    overflow-y: hidden; /* Prevents vertical bouncing */
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--parchment);
+    border-radius: 4px;
+    border: 2px solid var(--light-gold);
+    align-items: center;
+    color: var(--text-light);
+    font-size: 0.7rem;
+    text-align: center;
+    
+    /* Hides the ugly default scrollbar but keeps the scroll functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  /* Hides scrollbar for Chrome, Safari and Opera */
+  .timeline-photo-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .timeline-photo-container img {
+    scroll-snap-align: center; /* 'center' often feels better for carousels than 'start' */
+    flex: 0 0 100%; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+  /* Arrow Styling */
+  .carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Perfectly centers the arrows vertically */
+    background: rgba(255, 255, 255, 0.8); /* Slight white background so they stand out */
+    color: #8B4513; /* SaddleBrown */
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background 0.2s;
+  }
+
+  .carousel-arrow:hover {
+    background: rgba(255, 255, 255, 1);
+  }
+
+  .left-arrow {
+    left: 5px;
+  }
+
+  .right-arrow {
+    right: 5px;
   }
 
   .photo-placeholder {
@@ -935,9 +1047,9 @@
   .wishes-list::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.4); }
 </style>
 </head>
-<body>
+<body class="locked">
 
-<!-- ══ FLOATING LEAVES ══ -->
+<!-- ══ FLOATING LEAVES & COVER ══ -->
 <div id="cover">
   <div class="cover-bg"></div>
   <!-- leaves generated by JS -->
@@ -951,7 +1063,16 @@
     </h1>
     <div class="cover-divider"></div>
     <p class="cover-date">11 · 13 Juni 2026 · Konya, Türkiye</p>
-    <button class="open-btn" onclick="openInvitation()" data-i18n="open-btn">Buka Undangan - Açık Davet - Open Invitation</button>
+    
+    <div class="lang-select-wrapper">
+      <p class="lang-select-title">PILIH BAHASA / SELECT LANGUAGE / DİL SEÇİN</p>
+      <div class="lang-btn-group">
+        <button class="open-btn" onclick="openInvitation('id')">Indonesia</button>
+        <button class="open-btn" onclick="openInvitation('en')">English</button>
+        <button class="open-btn" onclick="openInvitation('tr')">Türkçe</button>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -1034,79 +1155,113 @@
   </section>
 
   <!-- OUR STORY -->
-  <section id="story">
-    <div class="section-inner">
-      <div class="reveal">
-        <p class="section-label" data-i18n="story-label">Perjalanan Cinta</p>
-        <h2 class="section-title" data-i18n="story-title">Our Story</h2>
-        <div class="line-divider"><span>🍃</span></div>
+    <section id="story">
+      <div class="section-inner">
+        <div class="reveal">
+          <p class="section-label" data-i18n="story-label">Perjalanan Cinta</p>
+          <h2 class="section-title" data-i18n="story-title">Our Story</h2>
+          <div class="line-divider"><span>🍃</span></div>
+        </div>
+
+        <div class="timeline">
+
+          <!-- TIMELINE ITEM 1 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-content">
+              <p class="timeline-year" data-i18n="timeline-year-id1">Awal segalanya</p>
+              <h3 class="timeline-title" data-i18n="story1-title">Pertama Bertemu</h3>
+              <p class="timeline-desc" data-i18n="story1-desc">Dari teman diskusi belajar, diskusi trip ke Norwegia, toast fairy, hingga "first date" ke kuburan Enschede, cerita kami dimulai.</p>
+            </div>
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            
+            <!-- Carousel 1 -->
+            <div class="carousel-wrapper">
+              <button class="carousel-arrow left-arrow">&#10094;</button>
+              <div class="timeline-photo-container">
+                <img src="story1-1.JPG" alt="Story 1-1">
+                <img src="story1-2.jpg" alt="Story 1-2">
+                <img src="story1-3.JPG" alt="Story 1-3">
+                <img src="story1-4.jpg" alt="Story 1-4">
+                <img src="story1-5.jpg" alt="Story 1-5">
+              </div>
+              <button class="carousel-arrow right-arrow">&#10095;</button>
+            </div>
+          </div>
+
+          <!-- TIMELINE ITEM 2 -->
+          <div class="timeline-item reveal">
+            
+            <!-- Carousel 2 -->
+            <div class="carousel-wrapper">
+              <button class="carousel-arrow left-arrow">&#10094;</button>
+              <div class="timeline-photo-container">
+                <img src="story2-1.JPG" alt="Story 2-1">
+                <img src="story2-2.jpg" alt="Story 2-2">
+                <img src="story2-3.JPG" alt="Story 2-3">
+                <img src="story2-4.jpg" alt="Story 2-4">
+                <img src="story2-5.jpg" alt="Story 2-5">
+              </div>
+              <button class="carousel-arrow right-arrow">&#10095;</button>
+            </div>
+
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-content">
+              <p class="timeline-year" data-i18n="timeline-year-id2">Momen spesial</p>
+              <h3 class="timeline-title" data-i18n="story2-title">Mulai Bersama</h3>
+              <p class="timeline-desc" data-i18n="story2-desc">"Ketagihan" trip bersama, kami selalu memastikan untuk selalu menyisihkan waktu untuk menjelajahi dunia bersama.</p>
+            </div>
+          </div>
+
+          <!-- TIMELINE ITEM 3 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-content">
+              <p class="timeline-year" data-i18n="timeline-year-id3">Lintas benua</p>
+              <h3 class="timeline-title" data-i18n="story3-title">4 Jam Beda Waktu</h3>
+              <p class="timeline-desc" data-i18n="story3-desc">Dua tahun menjalani hubungan jarak jauh, tapi semua terasa mudah jika dijalani dengan orang yang tepat.</p>
+            </div>
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            
+            <!-- Carousel 3 -->
+            <div class="carousel-wrapper">
+              <button class="carousel-arrow left-arrow">&#10094;</button>
+              <div class="timeline-photo-container">
+                <img src="story3-1.JPG" alt="Story 3-1">
+                <img src="story3-2.jpeg" alt="Story 3-2">
+                <img src="story3-3.jpeg" alt="Story 3-3">
+                <img src="story3-4.jpeg" alt="Story 3-4">
+                <img src="story3-5.jpeg" alt="Story 3-5">
+              </div>
+              <button class="carousel-arrow right-arrow">&#10095;</button>
+            </div>
+          </div>
+
+          <!-- TIMELINE ITEM 4 -->
+          <div class="timeline-item reveal">
+            
+            <!-- Carousel 4 -->
+            <div class="carousel-wrapper">
+              <button class="carousel-arrow left-arrow">&#10094;</button>
+              <div class="timeline-photo-container">
+                <img src="story4-1.JPG" alt="Story 4-1">
+                <img src="story4-2.jpeg" alt="Story 4-2">
+                <img src="story4-3.JPG" alt="Story 4-3">
+                <img src="story4-4.jpeg" alt="Story 4-4">
+                <img src="story4-5.jpg" alt="Story 4-5">
+              </div>
+              <button class="carousel-arrow right-arrow">&#10095;</button>
+            </div>
+
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-content">
+              <p class="timeline-year" data-i18n="timeline-year-id4">Selamanya</p>
+              <h3 class="timeline-title" data-i18n="story4-title">Yes, Forever.</h3>
+              <p class="timeline-desc" data-i18n="story4-desc">Dan kini, saatnya kami menjadikan segalanya resmi — dengan doa, cinta, dan keluarga di sisi kami.</p>
+            </div>
+          </div>
+
+        </div>
       </div>
-
-      <div class="timeline">
-
-        <div class="timeline-item reveal">
-          <div class="timeline-content">
-            <p class="timeline-year" data-i18n="timeline-year-id1">Awal segalanya</p>
-            <h3 class="timeline-title" data-i18n="story1-title">Pertama Bertemu</h3>
-            <p class="timeline-desc" data-i18n="story1-desc">Dari teman diskusi belajar, diskusi trip ke Norwegia, toast fairy, hingga "first date" ke kuburan Enschede, cerita kami dimulai.</p>
-          </div>
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-photo">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📸</span>
-              <span>Foto 1</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-photo">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📸</span>
-              <span>Foto 2</span>
-            </div>
-          </div>
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <p class="timeline-year" data-i18n="timeline-year-id2">Momen spesial</p>
-            <h3 class="timeline-title" data-i18n="story2-title">Mulai Bersama</h3>
-            <p class="timeline-desc" data-i18n="story2-desc">"Ketagihan" trip bersama, kami selalu memastikan untuk selalu menyisihkan waktu untuk menjelajahi dunia bersama.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-content">
-            <p class="timeline-year" data-i18n="timeline-year-id3">Lintas benua</p>
-            <h3 class="timeline-title" data-i18n="story3-title">4 Jam Beda Waktu</h3>
-            <p class="timeline-desc" data-i18n="story3-desc">Dua tahun menjalani hubungan jarak jauh, tapi semua terasa mudah jika dijalani dengan orang yang tepat.</p>
-          </div>
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-photo">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📸</span>
-              <span>Foto 3</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-photo">
-            <div class="photo-placeholder">
-              <span class="photo-placeholder-icon">📸</span>
-              <span>Foto 4</span>
-            </div>
-          </div>
-          <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-          <div class="timeline-content">
-            <p class="timeline-year" data-i18n="timeline-year-id4">Selamanya</p>
-            <h3 class="timeline-title" data-i18n="story4-title">Yes, Forever.</h3>
-            <p class="timeline-desc" data-i18n="story4-desc">Dan kini, saatnya kami menjadikan segalanya resmi — dengan doa, cinta, dan keluarga di sisi kami.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+    </section>
 
   <!-- EVENTS -->
   <section id="events">
@@ -1304,6 +1459,7 @@ const translations = {
     'cover-subtitle': 'Undangan Pernikahan',
     'open-btn': 'Buka Undangan',
     'quran-label': 'Firman Allah SWT',
+    'quran-ref-id': "QS. Ar-Rum : 21",
     'quran-trans': '"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."',
     'doa-nikah': 'Ya Allah, satukanlah hati kami dalam ikatan cinta yang Engkau ridhai.<br>Jadikanlah pernikahan ini sebagai awal dari ibadah panjang kami kepada-Mu.<br>Limpahkan keberkahan, kesetiaan, dan kasih sayang di antara kami.<br><em>Aamiin Ya Rabbal \'Aalamiin.</em>',
     'couple-label': 'Mempelai',
@@ -1311,6 +1467,10 @@ const translations = {
     'daughter-of': 'Putri dari',
     'son-of': 'Putra dari',
     'story-label': 'Perjalanan Cinta',
+    'timeline-year-id1': 'Awal Segalanya',
+    'timeline-year-id2': 'Momen Spesial',
+    'timeline-year-id3': 'Lintas Benua',
+    'timeline-year-id4': 'Selamanya',
     'story-title': 'Our Story',
     'story1-title': 'Pertama Bertemu',
     'story1-desc': 'Dari teman diskusi belajar, diskusi trip ke Norwegia, toast fairy, hingga "first date" ke kuburan Enschede, cerita kami dimulai.',
@@ -1357,6 +1517,11 @@ const translations = {
     'wish-message-placeholder': 'Doa & ucapan untuk Salsa & Serhat...',
     'wish-submit': 'Kirim Doa 🌿',
     'footer-note': '13 Juni 2026 · Konya, Türkiye · Dengan penuh cinta',
+    'wish-loading': 'Memuat doa... 🌿',
+    'wish-load-error': 'Gagal memuat doa.',
+    'wish-sending': 'Mengirim... ⏳',
+    'wish-send-error': 'Maaf, gagal mengirim doa. Silakan coba lagi.',
+    'wish-empty': 'Belum ada ucapan. Jadilah yang pertama! ✨',
   },
   en: {
     'cover-subtitle': 'Wedding Invitation',
@@ -1420,6 +1585,11 @@ const translations = {
     'wish-message-placeholder': 'Your prayers & wishes for Salsa & Serhat...',
     'wish-submit': 'Send Blessing 🌿',
     'footer-note': '13 June 2026 · Konya, Türkiye · With all our love',
+    'wish-loading': 'Loading wishes... 🌿',
+    'wish-load-error': 'Failed to load wishes.',
+    'wish-sending': 'Sending... ⏳',
+    'wish-send-error': 'Sorry, failed to send wish. Please try again.',
+    'wish-empty': 'No wishes yet. Be the first! ✨',
   },
   tr: {
     'cover-subtitle': 'Düğün Davetiyesi',
@@ -1483,6 +1653,11 @@ const translations = {
     'wish-message-placeholder': 'Salsa ve Serhat için dua ve dilekleriniz...',
     'wish-submit': 'Dua Gönder 🌿',
     'footer-note': "13 Haziran 2026 · Konya, Türkiye · Tüm sevgimizle",
+    'wish-loading': 'Dilekler yükleniyor... 🌿',
+    'wish-load-error': 'Dilekler yüklenemedi.',
+    'wish-sending': 'Gönderiliyor... ⏳',
+    'wish-send-error': 'Üzgünüz, dilek gönderilemedi. Lütfen tekrar deneyin.',
+    'wish-empty': 'Henüz dilek yok. İlk siz olun! ✨',
   }
 };
 
@@ -1521,23 +1696,35 @@ function setLang(lang) {
   updateCountdownLabels();
 }
 
-function openInvitation() {
-  const cover = document.getElementById('cover');
+function openInvitation(lang) {
+  // 1. Set the language from the button clicked
+  setLang(lang);
+
   const main = document.getElementById('main');
   const switcher = document.getElementById('lang-switcher');
 
-  cover.classList.add('hidden');
+  // 2. Unlock the scrolling so the user can go down
+  document.body.classList.remove('locked');
+
+  // 3. Make main content and language switcher visible
   main.classList.add('visible');
   switcher.classList.add('visible');
 
-  // Try to play audio
+  // 4. Smooth scroll down to the Quran section (main body)
+  main.scrollIntoView({ behavior: 'smooth' });
+  
+  // 5. Play audio (with a catch block to prevent console errors if browser blocks autoplay)
   const audio = document.getElementById('bg-audio');
-  audio.volume = 0.25;
-  audio.play().catch(() => {});
+  audio.play().catch(e => console.log("Audio play prevented:", e));
 
-  // Start scroll reveal
+  // 6. Start features
   initScrollReveal();
   startCountdown();
+  
+  // Only load wishes if they haven't been loaded yet
+  if (wishes.length === 0) {
+      loadWishesFromDatabase();
+  }
 }
 
 // ── FLOATING LEAVES ──
@@ -1569,6 +1756,31 @@ function initScrollReveal() {
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
+
+// ── CARROUSEL ──
+const carousels = document.querySelectorAll('.carousel-wrapper');
+
+carousels.forEach(wrapper => {
+  const container = wrapper.querySelector('.timeline-photo-container');
+  const leftArrow = wrapper.querySelector('.left-arrow');
+  const rightArrow = wrapper.querySelector('.right-arrow');
+
+  rightArrow.addEventListener('click', () => {
+    if (Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth) {
+      container.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+    }
+  });
+
+  leftArrow.addEventListener('click', () => {
+    if (container.scrollLeft <= 0) {
+      container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+    }
+  });
+});
 
 // ── COUNTDOWN ──
 let currentEvent = 'kina';
@@ -1630,7 +1842,6 @@ function updateCountdown() {
   document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
 }
 
-// Also update countdown when tab switches
 document.querySelectorAll('.countdown-tab').forEach((tab, i) => {
   tab.addEventListener('click', () => {
     updateCountdown();
@@ -1638,24 +1849,68 @@ document.querySelectorAll('.countdown-tab').forEach((tab, i) => {
 });
 
 // ── WISHES ──
-let wishes = [
-  { name: 'Keluarga Besar', message: 'Selamat menempuh hidup baru. Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Barakallah! 🌿' }
-];
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwTl56_NrUKe3CeOkhUHXbhDxQaRZfjezOgkrrX9QhT4aZOEGC0ULG462wOKuJ89NrDnA/exec'; 
 
-function submitWish() {
-  const name = document.getElementById('wish-name').value.trim();
-  const message = document.getElementById('wish-message').value.trim();
+let wishes = [];
+
+async function loadWishesFromDatabase() {
+  const container = document.getElementById('wishes-list');
+  container.innerHTML = `<p data-i18n="wish-loading" style="text-align:center; color:var(--text-light); font-size:0.8rem;">${translations[currentLang]['wish-loading']}</p>`;
+  
+  try {
+    const response = await fetch(SCRIPT_URL);
+    const data = await response.json();
+    wishes = data;
+    renderWishes();
+  } catch (error) {
+    console.error('Error fetching wishes:', error);
+    container.innerHTML = `<p data-i18n="wish-load-error" style="text-align:center; color:var(--terracotta); font-size:0.8rem;">${translations[currentLang]['wish-load-error']}</p>`;
+  }
+}
+
+async function submitWish() {
+  const nameInput = document.getElementById('wish-name');
+  const messageInput = document.getElementById('wish-message');
+  const submitBtn = document.querySelector('.wish-submit');
+
+  const name = nameInput.value.trim();
+  const message = messageInput.value.trim();
 
   if (!name || !message) return;
 
-  wishes.unshift({ name, message });
-  document.getElementById('wish-name').value = '';
-  document.getElementById('wish-message').value = '';
-  renderWishes();
+  submitBtn.innerText = translations[currentLang]['wish-sending'];
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = '0.7';
+
+  const formData = new FormData();
+  formData.append('name', name);
+  formData.append('message', message);
+
+  try {
+    await fetch(SCRIPT_URL, { method: 'POST', body: formData });
+
+    wishes.unshift({ name, message });
+    renderWishes();
+
+    nameInput.value = '';
+    messageInput.value = '';
+  } catch (error) {
+    alert(translations[currentLang]['wish-send-error']);
+  } finally {
+    submitBtn.innerText = translations[currentLang]['wish-submit'];
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = '1';
+  }
 }
 
 function renderWishes() {
   const container = document.getElementById('wishes-list');
+  
+  if (wishes.length === 0) {
+    container.innerHTML = `<p data-i18n="wish-empty" style="text-align:center; color:var(--text-light); font-size:0.8rem;">${translations[currentLang]['wish-empty']}</p>`;
+    return;
+  }
+
   container.innerHTML = wishes.map(w => `
     <div class="wish-item" style="animation: fadeUp 0.4s ease">
       <p class="wish-name">${escapeHtml(w.name)}</p>
@@ -1667,6 +1922,7 @@ function renderWishes() {
 function escapeHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
+
 </script>
 </body>
 </html>
