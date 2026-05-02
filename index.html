@@ -1199,13 +1199,19 @@
       <h3 id="guest-name-display" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--cream); margin-top: 0.3rem;">Guest Name</h3>
     </div>
 
-    <div class="lang-select-wrapper">
+    <!-- BUTTONS FOR UNPERSONALIZED LINKS (Shows 3 languages to choose from) -->
+    <div class="lang-select-wrapper" id="unpersonalized-buttons">
       <p class="lang-select-title">PILIH BAHASA / SELECT LANGUAGE / DİL SEÇİN</p>
       <div class="lang-btn-group">
         <button class="open-btn" onclick="openInvitation('id')">Indonesia</button>
         <button class="open-btn" onclick="openInvitation('en')">English</button>
         <button class="open-btn" onclick="openInvitation('tr')">Türkçe</button>
       </div>
+    </div>
+
+    <!-- BUTTON FOR PERSONALIZED LINKS (Shows a single "Open Invitation" button) -->
+    <div class="lang-select-wrapper" id="personalized-button" style="display: none;">
+      <button class="open-btn" onclick="openInvitation(currentLang)" data-i18n="open-btn">Buka Undangan</button>
     </div>
 
   </div>
@@ -1553,15 +1559,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const guest = urlParams.get('to');
   const langPref = urlParams.get('lang'); // Looks for &lang=en, id, or tr
 
-  // 1. If a language preference is in the URL, translate the cover instantly!
+  const unpersonalizedBtns = document.getElementById('unpersonalized-buttons');
+  const personalizedBtn = document.getElementById('personalized-button');
+
+  // 1. Language Logic
   if (langPref && translations[langPref]) {
+    // If language is in the link: Set it, hide the 3 buttons, show the 1 "Open" button
     setLang(langPref); 
+    unpersonalizedBtns.style.display = 'none';
+    personalizedBtn.style.display = 'flex';
   } else {
-    // If no language is in the URL, default to Indonesian so the greeting is correct
+    // If no language in link: Default to ID, but keep the 3 buttons so they can choose
     setLang('id');
   }
 
-  // 2. If a guest name exists, display it!
+  // 2. Guest Name Logic
   if (guest) {
     const greetingBox = document.getElementById('guest-greeting-box');
     const nameDisplay = document.getElementById('guest-name-display');
