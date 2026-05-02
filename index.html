@@ -891,6 +891,60 @@
     background: var(--deep-brown);
   }
 
+  /* ── CUTE THUMBNAIL STYLING ── */
+  .thumbnail-wrapper {
+    position: relative;
+    max-width: 450px; /* Keeps it perfectly sized on desktop */
+    margin: 0 auto 2rem auto; /* Centers it and adds space below */
+    cursor: pointer;
+  }
+
+  .stream-thumbnail {
+    width: 100%;
+    height: auto;
+    border-radius: 12px; /* Soft, cute corners */
+    border: 3px solid var(--light-gold); /* Theme matching border */
+    box-shadow: 0 8px 24px rgba(74, 55, 40, 0.15); /* Soft, elegant drop shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block; 
+  }
+
+  /* Floating effect on hover */
+  .thumbnail-wrapper:hover .stream-thumbnail {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(74, 55, 40, 0.25);
+  }
+
+  /* Frosted play button overlay */
+  .play-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(245, 239, 230, 0.85); /* Frosty cream background */
+    color: var(--terracotta);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    backdrop-filter: blur(4px);
+    border: 2px solid var(--warm-brown);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+    pointer-events: none; /* Stops it from blocking clicks */
+  }
+
+  /* The play button turns solid terracotta when hovered */
+  .thumbnail-wrapper:hover .play-hint {
+    background: var(--terracotta);
+    color: var(--cream);
+    border-color: var(--terracotta);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
   /* ── WISHES ── */
   #wishes {
     background: var(--deep-brown);
@@ -1456,6 +1510,14 @@
           Tidak bisa hadir langsung? Kami tetap ingin kamu menjadi bagian dari hari bahagia ini.<br>
           Saksikan momen sakral kami secara langsung melalui tautan berikut.
         </p>
+
+        <!-- NEW: Cute Thumbnail Wrapper -->
+        <div class="thumbnail-wrapper">
+          <img src="youtube_thumbnail.jpg" alt="YouTube Live Thumbnail" class="stream-thumbnail">
+          <!-- A cute little decorative play icon overlay to hint it's a video -->
+          <div class="play-hint">▶</div>
+        </div>
+
         <a href="#" id="stream-link" class="livestream-btn" data-i18n="stream-btn">
           ▶ Tonton Live
         </a>
