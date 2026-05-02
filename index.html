@@ -509,7 +509,7 @@
   .timeline {
     position: relative;
     margin-top: 3rem;
-    z-index: 1;
+    z-index: 1; /* Creates a proper stacking context for the line */
   }
 
   .timeline::before {
@@ -518,11 +518,11 @@
     left: 50%;
     top: 0;
     bottom: 0;
-    width: 1px;
-    background: linear-gradient(to bottom, transparent, var(--warm-brown) 10%, var(--warm-brown) 90%, transparent);
-    opacity: 0.3;
+    width: 2px; /* Increased from 1px so it doesn't vanish on phone screens */
+    background: linear-gradient(to bottom, transparent, var(--warm-brown) 5%, var(--warm-brown) 95%, transparent);
+    opacity: 0.5; /* Slightly increased opacity so it stands out beautifully against the cream background */
     transform: translateX(-50%);
-    z-index: -1;
+    z-index: -1; /* Pushes the line safely behind the dots and photos */
   }
 
   .timeline-item {
