@@ -1186,7 +1186,7 @@
       Serhat
     </h1>
     <div class="cover-divider"></div>
-    <p class="cover-date" data-i18n="cover-subtitle-date">11 · 13 June 2026 · Konya, Türkiye</p>
+    <p class="cover-date" data-i18n="cover-subtitle-date">13 June 2026 · Konya, Türkiye</p>
     
     <div class="lang-select-wrapper">
       <p class="lang-select-title">PILIH BAHASA / SELECT LANGUAGE / DİL SEÇİN</p>
@@ -1592,7 +1592,7 @@ const translations = {
     'wish-sending': 'Mengirim... ⏳',
     'wish-send-error': 'Maaf, gagal mengirim doa. Silakan coba lagi.',
     'wish-empty': 'Belum ada ucapan. Jadilah yang pertama! ✨',
-    'cover-subtitle-date': '11 · 13 Juni 2026 · Konya, Türkiye',
+    'cover-subtitle-date': '13 Juni 2026 · Konya, Türkiye',
     'nikkahdate-trans': 'Sabtu, 13 Juni 2026',
     'kinadate-trans': 'Kamis, 11 Juni 2026',
     'close-relative': 'Hanya Keluarga Dekat',
@@ -1655,7 +1655,7 @@ const translations = {
     'wish-sending': 'Sending... ⏳',
     'wish-send-error': 'Sorry, failed to send wish. Please try again.',
     'wish-empty': 'No wishes yet. Be the first! ✨',
-    'cover-subtitle-date': '11 · 13 June 2026 · Konya, Türkiye',
+    'cover-subtitle-date': '13 June 2026 · Konya, Türkiye',
     'nikkahdate-trans': 'Saturday, 13 June 2026',
     'kinadate-trans': 'Thursday, 11 June 2026',
     'close-relative': 'Only Close Relatives',
@@ -1718,7 +1718,7 @@ const translations = {
     'wish-sending': 'Gönderiliyor... ⏳',
     'wish-send-error': 'Üzgünüz, dilek gönderilemedi. Lütfen tekrar deneyin.',
     'wish-empty': 'Henüz dilek yok. İlk siz olun! ✨',
-    'cover-subtitle-date': '11 · 13 Haziran 2026 · Konya, Türkiye',
+    'cover-subtitle-date': '13 Haziran 2026 · Konya, Türkiye',
     'nikkahdate-trans': 'Cumartesi, 13 Haziran 2026',
     'kinadate-trans': 'Perşembe, 11 Haziran 2026',
     'close-relative': 'Sadece Yakın Aile',
@@ -1729,6 +1729,7 @@ const translations = {
 };
 
 let currentLang = 'id';
+let countdownInterval;
 
 function setLang(lang) {
   currentLang = lang;
@@ -1887,8 +1888,6 @@ carousels.forEach(wrapper => {
 
 // ── COUNTDOWN ──
 const targetDate = new Date('2026-06-13T19:00:00+03:00'); // Istanbul time (UTC+3)
-
-let countdownInterval;
 
 function startCountdown() {
   if (countdownInterval) clearInterval(countdownInterval);
