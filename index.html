@@ -47,13 +47,14 @@
   #cover {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100vh;     /* Fallback for older browsers */
+    height: 100svh;    /* NEW: Perfectly fits mobile screens with menu bars */
     background: var(--deep-brown);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Keeps leaves contained */
+    overflow: hidden; 
     z-index: 10;
   }
 
@@ -1071,8 +1072,17 @@
       text-align: center;
     }
     .ampersand-center { font-size: 3rem; }
-    
-    /* NEW: Bulletproof Mobile Timeline */
+
+    .cover-content {
+      transform: translateY(-3%); /* Lifts the whole block up slightly */
+    }
+    .lang-select-wrapper {
+      margin-top: 1.5rem; /* Brings the buttons a bit closer to the date */
+    }
+    .cover-names {
+      font-size: 4.5rem; /* Slightly adjusts the massive name size so it fits perfectly */
+    }
+
     .timeline::before { 
       left: 20px; 
       transform: none; /* Stops it from shifting into the margin */
