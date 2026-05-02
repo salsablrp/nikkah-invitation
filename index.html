@@ -1729,8 +1729,6 @@ const translations = {
 };
 
 let currentLang = 'id';
-let countdownTarget = new Date('2026-06-13T19:00:00+03:00'); // Istanbul time (UTC+3)
-let countdownInterval;
 
 function setLang(lang) {
   currentLang = lang;
@@ -1760,8 +1758,6 @@ function setLang(lang) {
     document.getElementById('doa-nikah').innerHTML = t['doa-nikah'] || '';
   }
 
-  // Update countdown labels
-  updateCountdownLabels();
 }
 
 // ── AUDIO CONTROL LOGIC ──
@@ -1889,6 +1885,7 @@ carousels.forEach(wrapper => {
 
 // ── COUNTDOWN ──
 const targetDate = new Date('2026-06-13T19:00:00+03:00'); // Istanbul time (UTC+3)
+let countdownInterval;
 
 function startCountdown() {
   if (countdownInterval) clearInterval(countdownInterval);
