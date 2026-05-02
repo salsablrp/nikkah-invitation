@@ -433,7 +433,8 @@
   .couple-photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    background: var(--parchment);
   }
 
   .couple-photo-placeholder {
@@ -1261,8 +1262,7 @@
         <div class="couple-card">
           <div class="couple-photo">
             <div class="photo-placeholder">
-              <span class="photo-placeholder-icon"><img src="salsa.jpeg"></span>
-              <span>Foto Salsa</span>
+              <img src="salsa.jpeg">
             </div>
           </div>
           <p class="couple-name">Salsabila</p>
@@ -1279,8 +1279,7 @@
         <div class="couple-card">
           <div class="couple-photo">
             <div class="photo-placeholder">
-              <span class="photo-placeholder-icon"><img src="serhat.jpeg"></span>
-              <span>Foto Serhat</span>
+              <img src="serhat.jpeg">
             </div>
           </div>
           <p class="couple-name">Serhat</p>
@@ -1518,9 +1517,6 @@
           <div class="play-hint">▶</div></a>
         </div>
 
-        <a href="#" id="stream-link" class="livestream-btn" data-i18n="stream-btn">
-          ▶ Tonton Live
-        </a>
         <p style="margin-top:1rem; font-size:0.7rem; color:var(--text-light); font-family:'Jost',sans-serif; letter-spacing:0.1em;" data-i18n="stream-note">
           *Link akan diaktifkan pada hari pelaksanaan
         </p>
@@ -1634,8 +1630,6 @@ const translations = {
     'stream-label': 'Saksikan Bersama',
     'stream-title': 'Live Streaming',
     'stream-desc': 'Tidak bisa hadir langsung? Kami tetap ingin kamu menjadi bagian dari hari bahagia ini.<br>Saksikan momen sakral kami secara langsung melalui tautan berikut.',
-    'stream-btn': '▶ Tonton Live',
-    'stream-note': '*Link akan diaktifkan pada hari pelaksanaan',
     'wishes-label': 'Doa & Ucapan',
     'wishes-title': 'Kirim Doa untuk Kami',
     'wish-name-placeholder': 'Nama kamu...',
@@ -1697,8 +1691,6 @@ const translations = {
     'stream-label': 'Watch Together',
     'stream-title': 'Live Streaming',
     'stream-desc': 'Can\'t make it in person? We still want you to be part of our special day.<br>Watch our sacred moment live through the link below.',
-    'stream-btn': '▶ Watch Live',
-    'stream-note': '*Link will be activated on the day of the event',
     'wishes-label': 'Prayers & Wishes',
     'wishes-title': 'Send Your Blessings',
     'wish-name-placeholder': 'Your name...',
@@ -1759,8 +1751,6 @@ const translations = {
     'stream-label': 'Birlikte İzleyin',
     'stream-title': 'Canlı Yayın',
     'stream-desc': 'Aramızda olamıyor musunuz? Sizi yine de bu mutlu günümüzde yanımızda hissetmek isteriz.<br>Bu mutlu anımıza aşağıdaki bağlantı üzerinden canlı olarak katılabilirsiniz.',
-    'stream-btn': '▶ Canlı İzle',
-    'stream-note': '*Bağlantı etkinlik günü aktif edilecektir',
     'wishes-label': 'Dua ve Dilekler',
     'wishes-title': 'Dua Gönder',
     'wish-name-placeholder': 'Adın...',
