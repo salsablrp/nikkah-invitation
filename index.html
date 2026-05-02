@@ -633,7 +633,7 @@
   }
 
   .timeline-photo-container img {
-    scroll-snap-align: center; /* 'center' often feels better for carousels than 'start' */
+    scroll-snap-align: start; 
     flex: 0 0 100%; 
     width: 100%;
     height: 100%;
@@ -1907,18 +1907,24 @@ carousels.forEach(wrapper => {
   const rightArrow = wrapper.querySelector('.right-arrow');
 
   rightArrow.addEventListener('click', () => {
+    // Add the 10px gap to the scroll distance so it lands perfectly
+    const scrollDistance = container.clientWidth + 10; 
+
     if (Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth) {
       container.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
-      container.scrollBy({ left: container.clientWidth, behavior: 'smooth' });
+      container.scrollBy({ left: scrollDistance, behavior: 'smooth' });
     }
   });
 
   leftArrow.addEventListener('click', () => {
+    // Add the 10px gap here as well
+    const scrollDistance = container.clientWidth + 10;
+
     if (container.scrollLeft <= 0) {
       container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
     } else {
-      container.scrollBy({ left: -container.clientWidth, behavior: 'smooth' });
+      container.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
     }
   });
 });
