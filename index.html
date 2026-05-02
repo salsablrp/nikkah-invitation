@@ -1421,11 +1421,8 @@
       <h2 class="section-title" data-i18n="countdown-title">Segera Tiba</h2>
       <div class="line-divider"><span>🌸</span></div>
 
-      <div class="countdown-tabs">
-        <button class="countdown-tab" onclick="switchCountdown('nikah')" data-i18n="nikah-tab">Nikkah</button>
-      </div>
-
-      <p class="countdown-event-label" id="countdown-event-label">13 Juni 2026 · Nikkah</p>
+      <!-- Tabs removed! Just the elegant date and the numbers remain -->
+      <p class="countdown-event-label" id="countdown-event-label" data-i18n="countdown-date-label">13 Juni 2026 · Ijab Kabul dan Perayaan</p>
 
       <div class="countdown-display">
         <div class="countdown-unit">
@@ -1600,7 +1597,8 @@ const translations = {
     'kinadate-trans': 'Kamis, 11 Juni 2026',
     'close-relative': 'Hanya Keluarga Dekat',
     'time-id': '22:00 WIB',
-    'stream-note': '*Link akan diaktifkan pada hari pelaksanaan'
+    'stream-note': '*Link akan diaktifkan pada hari pelaksanaan',
+    'countdown-date-label':'13 Juni 2026 · Ijab Kabul dan Perayaan'
   },
   en: {
     'cover-subtitle': 'Wedding Invitation',
@@ -1662,7 +1660,8 @@ const translations = {
     'kinadate-trans': 'Thursday, 11 June 2026',
     'close-relative': 'Only Close Relatives',
     'time-id': '6pm UTC+3 (10pm UTC+7)',
-    'stream-note': '*The link will be activated on the day of the event'
+    'stream-note': '*The link will be activated on the day of the event',
+    'countdown-date-label':'13 Haziran 2026 · Wedding and Celebration'
   },
   tr: {
     'cover-subtitle': 'Düğün Davetiyesi',
@@ -1724,7 +1723,8 @@ const translations = {
     'kinadate-trans': 'Perşembe, 11 Haziran 2026',
     'close-relative': 'Sadece Yakın Aile',
     'time-id': '18:00',
-    'stream-note': '*Bağlantı, etkinlik günü aktif hale getirilecektir'
+    'stream-note': '*Bağlantı, etkinlik günü aktif hale getirilecektir',
+    'countdown-date-label':'13 Haziran 2026 · Nikkah & Düğün'
   }
 };
 
@@ -1888,34 +1888,9 @@ carousels.forEach(wrapper => {
 });
 
 // ── COUNTDOWN ──
-let currentEvent = 'nikah';
-const targetDates = {
-  kina: new Date('2026-06-11T19:00:00+03:00'),
-  nikah: new Date('2026-06-13T19:00:00+03:00')
-};
+const targetDate = new Date('2026-06-13T19:00:00+03:00'); // Istanbul time (UTC+3)
 
-function switchCountdown(event) {
-  currentEvent = event;
-  document.querySelectorAll('.countdown-tab').forEach(t => t.classList.remove('active'));
-  event === 'kina'
-    ? document.querySelectorAll('.countdown-tab')[0].classList.add('active')
-    : document.querySelectorAll('.countdown-tab')[1].classList.add('active');
-  updateCountdownLabels();
-}
-
-function updateCountdownLabels() {
-  const t = translations[currentLang];
-  const label = document.getElementById('countdown-event-label');
-  if (currentEvent === 'kina') {
-    label.textContent = currentLang === 'tr' ? '11 Haziran 2026 · Kına Gecesi' :
-                        currentLang === 'en' ? '11 June 2026 · Kına Gecesi' :
-                        '11 Juni 2026 · Kına Gecesi';
-  } else {
-    label.textContent = currentLang === 'tr' ? '13 Haziran 2026 · Nikah' :
-                        currentLang === 'en' ? '13 June 2026 · Nikkah' :
-                        '13 Juni 2026 · Nikah';
-  }
-}
+let countdownInterval;
 
 function startCountdown() {
   if (countdownInterval) clearInterval(countdownInterval);
@@ -1925,9 +1900,9 @@ function startCountdown() {
 
 function updateCountdown() {
   const now = new Date();
-  const target = targetDates[currentEvent];
-  const diff = target - now;
+  const diff = targetDate - now;
 
+  // If the wedding day has passed, lock the countdown at zero
   if (diff <= 0) {
     document.getElementById('cd-days').textContent = '00';
     document.getElementById('cd-hours').textContent = '00';
@@ -1946,12 +1921,6 @@ function updateCountdown() {
   document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
   document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
 }
-
-document.querySelectorAll('.countdown-tab').forEach((tab, i) => {
-  tab.addEventListener('click', () => {
-    updateCountdown();
-  });
-});
 
 // ── WISHES ──
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwTl56_NrUKe3CeOkhUHXbhDxQaRZfjezOgkrrX9QhT4aZOEGC0ULG462wOKuJ89NrDnA/exec'; 
