@@ -534,12 +534,12 @@
     align-items: center;
   }
 
-  .timeline-item:nth-child(even) .timeline-content { order: 3; text-align: left; }
+  .timeline-item:nth-child(even) .timeline-content { order: 3; text-align: left}
   .timeline-item:nth-child(even) .timeline-photo { order: 1; }
   .timeline-item:nth-child(even) .timeline-dot { order: 2; }
 
   .timeline-content {
-    text-align: right;
+    text-align: left;
   }
 
   .timeline-year {
@@ -1152,13 +1152,13 @@
     .timeline-content,
     .timeline-item:nth-child(even) .timeline-content { 
       text-align: left !important; 
-      order: unset;
+      order: 1;
       width: 100%;
     }
     
     .carousel-wrapper,
     .timeline-item:nth-child(even) .carousel-wrapper { 
-      order: unset; 
+      order: 2; 
       width: 100%; 
       max-width: 260px; 
     }
@@ -1755,9 +1755,9 @@ const translations = {
     'cover-subtitle': 'Düğün Davetiyesi',
     'open-btn': 'Daveti Aç',
     'quran-label': "Allah'ın Kelamı",
-    'quran-ref-id': "Kur’an, Rum Suresi 21",
-    'quran-trans': '"Size kendi cinsinizden, kendileriyle huzur bulasınız diye eşler yaratması ve aranıza sevgi ve merhamet koyması da O\'nun ayetlerindendir. Şüphesiz bunda düşünen bir toplum için ibretler vardır."',
-    'doa-nikah': 'Ya Allah, kalplerimizi razı olduğun bir sevgi bağıyla birleştir.<br>Bu evliliği sana uzun ibadetimizin başlangıcı kıl.<br>Aramıza bereket, sadakat ve şefkat ihsan et.<br><em>Aamiin Ya Rabbal \'Aalamiin.</em>',
+    'quran-ref-id': 'Rum Suresi 21. Ayet',
+    'quran-trans': 'Kendileriyle huzur bulmanız için size kendi cinsinizden eşler yaratması ve aranıza sevgi ile merhamet koyması, O’nun ayetlerindendir. Şüphesiz bunda düşünen bir toplum için ibretler vardır.',
+    'doa-nikah': 'Allah’ım, kalplerimizi razı olacağın bir sevgi bağıyla birleştir.<br>Bu evliliği Sana olan kulluğumuzun hayırlı bir başlangıcı eyle.<br>Aramıza bereket, sadakat ve şefkat ihsan eyle.<br><em>Âmin, ya Rabbel \'âlemin.</em>',
     'couple-label': 'Gelin ve Damat',
     'couple-title': 'Sonsuz Şükranla',
     'daughter-of': 'Kızı',
@@ -1769,9 +1769,9 @@ const translations = {
     'timeline-year-id3': 'Kıtalar Boyunca',
     'timeline-year-id4': 'Sonsuza Dek',
     'story1-title': 'İlk Buluşma',
-    'story1-desc': 'Çalışma sohbetlerinden, Norveç seyahati planlarına, “toast fairy” anlarına ve Enschede’deki bir mezarlıkta gerçekleşen “ilk randevuya” kadar — hikâyemiz böyle başladı.',
+    'story1-desc': 'Çalışma sohbetleriyle başlayan yolculuğumuz; Norveç seyahati planlarına, “toast fairy” anılarına ve Enschede’de bir mezarlıkta geçen o sıra dışı ilk buluşmaya uzandı. Hikâyemiz işte böyle başladı.',
     'story2-title': 'Birlikte Başladık',
-    'story2-desc': 'Birlikte seyahat etmeye “bağımlı” olduk; dünyayı yan yana keşfetmek için her zaman zaman ayırmaya özen gösteriyoruz.',
+    'story2-desc': 'Birlikte seyahat etmeyi bir tutkuya dönüştürdük; dünyayı yan yana keşfetmek, yeni yerler görmek ve her yolculukta bize ait hikâyeler biriktirmek için her zaman kendimize zaman ayırıyoruz.',
     'story3-title': '4 Saatlik Zaman Farkı',
     'story3-desc': 'İki yıl boyunca uzak mesafe ilişkisi yaşadık, ama doğru kişiyle olunca her şey kolay geliyor.',
     'story4-title': 'Evet, Sonsuza Dek.',
