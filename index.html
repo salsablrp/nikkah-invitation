@@ -250,7 +250,7 @@
   }
 
   .section-inner {
-    max-width: 680px;
+    max-width: 800px;
     margin: 0 auto;
     position: relative;
   }
@@ -470,6 +470,7 @@
   .timeline {
     position: relative;
     margin-top: 3rem;
+    z-index: 1;
   }
 
   .timeline::before {
@@ -482,6 +483,7 @@
     background: linear-gradient(to bottom, transparent, var(--warm-brown) 10%, var(--warm-brown) 90%, transparent);
     opacity: 0.3;
     transform: translateX(-50%);
+    z-index: -1;
   }
 
   .timeline-item {
@@ -1030,13 +1032,51 @@
       text-align: center;
     }
     .ampersand-center { font-size: 3rem; }
+    
+    /* NEW: Bulletproof Mobile Timeline */
+    .timeline::before { 
+      left: 20px; 
+      transform: none; /* Stops it from shifting into the margin */
+    }
+    
+    /* Forces all timeline items (even and odd) to stack neatly */
+    .timeline-item, 
+    .timeline-item:nth-child(even) { 
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 50px; /* Makes room for the line on the left */
+      gap: 0.8rem;
+      position: relative;
+    }
+    
+    .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot { 
+      position: absolute;
+      left: 14px; /* Centers the dot perfectly over the 20px line */
+      top: 5px; /* Aligns with the title text */
+      order: unset;
+    }
+    
+    .timeline-content,
+    .timeline-item:nth-child(even) .timeline-content { 
+      text-align: left !important; 
+      order: unset;
+      width: 100%;
+    }
+    
+    .carousel-wrapper,
+    .timeline-item:nth-child(even) .carousel-wrapper { 
+      order: unset; 
+      width: 100%; 
+    }
+
+    /* Makes the photos slightly shorter on mobile so you can read the text without scrolling too much */
+    .timeline-photo-container {
+      aspect-ratio: 4/3; 
+    }
+
     .events-grid { grid-template-columns: 1fr; }
-    .timeline::before { left: 20px; }
-    .timeline-item { grid-template-columns: 40px 1fr; }
-    .timeline-item .timeline-photo { display: none; }
-    .timeline-item:nth-child(even) .timeline-content { order: 2; text-align: left; }
-    .timeline-item:nth-child(even) .timeline-dot { order: 1; }
-    .timeline-content { text-align: left !important; }
     .filter-steps { grid-template-columns: 1fr; }
     .countdown-sep { display: none; }
   }
