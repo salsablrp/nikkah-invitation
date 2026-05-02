@@ -1193,7 +1193,12 @@
     </h1>
     <div class="cover-divider"></div>
     <p class="cover-date" data-i18n="cover-subtitle-date">11 · 13 June 2026 · Konya, Türkiye</p>
-    
+
+    <div id="guest-greeting-box" style="display: none; margin-top: 2rem; animation: fadeUp 1s 1s forwards; opacity: 0;">
+      <p style="font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--light-gold); text-transform: uppercase;" data-i18n="guest-greet">Kepada Yth. </p>
+      <h3 id="guest-name-display" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--cream); margin-top: 0.3rem;">Guest Name</h3>
+    </div>
+
     <div class="lang-select-wrapper">
       <p class="lang-select-title">PILIH BAHASA / SELECT LANGUAGE / DİL SEÇİN</p>
       <div class="lang-btn-group">
@@ -1541,9 +1546,29 @@ if ('scrollRestoration' in history) {
 // Forces the page back to the very top when reloaded
 window.scrollTo(0, 0);
 
+// ── PERSONALIZED GUEST GREETING ──
+document.addEventListener("DOMContentLoaded", () => {
+  // Look at the web address for a "?to=" parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const guest = urlParams.get('to');
+
+  // If a name exists in the link, display it!
+  if (guest) {
+    const greetingBox = document.getElementById('guest-greeting-box');
+    const nameDisplay = document.getElementById('guest-name-display');
+    
+    // Unhide the box
+    greetingBox.style.display = 'block';
+    
+    // Clean up the name (removes %20 or + symbols and turns them into spaces)
+    nameDisplay.innerText = guest.replace(/\+/g, ' ');
+  }
+});
+
 // ── TRANSLATIONS ──
 const translations = {
   id: {
+    'guest-greet': 'Kepada Yth. ',
     'cover-subtitle': 'Undangan Pernikahan',
     'open-btn': 'Buka Undangan',
     'quran-label': 'Firman Allah SWT',
@@ -1607,6 +1632,7 @@ const translations = {
     'countdown-date-label': '13 Juni 2026 · Ijab Kabul dan Perayaan'
   },
   en: {
+    'guest-greet': 'Dear, ',
     'cover-subtitle': 'Wedding Invitation',
     'open-btn': 'Open Invitation',
     'quran-label': 'The Word of Allah SWT',
@@ -1670,6 +1696,7 @@ const translations = {
     'countdown-date-label': '13 Haziran 2026 · Wedding and Celebration'
   },
   tr: {
+    'guest-greet': 'Merhaba ',
     'cover-subtitle': 'Düğün Davetiyesi',
     'open-btn': 'Daveti Aç',
     'quran-label': "Allah'ın Kelamı",
