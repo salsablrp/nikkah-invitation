@@ -698,13 +698,6 @@
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
-  .events-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2.5rem;
-  }
-
   .event-card {
     border: 1px solid rgba(201,168,76,0.25);
     padding: 2rem 1.5rem;
@@ -1182,7 +1175,6 @@
       width: 100%;
     }
 
-    .events-grid { grid-template-columns: 1fr; }
     .countdown-sep { display: none; }
   }
 
@@ -1298,7 +1290,7 @@
       <div class="section-inner">
         <div class="reveal">
           <p class="section-label" data-i18n="story-label">Perjalanan Cinta</p>
-          <h2 class="section-title" data-i18n="story-title">Our Story</h2>
+          <h2 class="section-title" data-i18n="story-title">Cerita Kami</h2>
           <div class="line-divider"><span>🍃</span></div>
         </div>
 
@@ -1309,7 +1301,7 @@
             <div class="timeline-content">
               <p class="timeline-year" data-i18n="timeline-year-id1">Awal segalanya</p>
               <h3 class="timeline-title" data-i18n="story1-title">Pertama Bertemu</h3>
-              <p class="timeline-desc" data-i18n="story1-desc">Dari teman diskusi belajar, diskusi trip ke Norwegia, toast fairy, hingga "first date" ke kuburan Enschede, cerita kami dimulai.</p>
+              <p class="timeline-desc" data-i18n="story1-desc">Berawal dari teman diskusi belajar, berlanjut ke obrolan tentang perjalanan ke Norwegia, cerita “toast fairy”, hingga “kencan pertama” yang tak biasa di kuburan Enschede—dari sanalah kisah kami dimulai.</p>
             </div>
             <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
             
@@ -1347,7 +1339,7 @@
             <div class="timeline-content">
               <p class="timeline-year" data-i18n="timeline-year-id2">Momen spesial</p>
               <h3 class="timeline-title" data-i18n="story2-title">Mulai Bersama</h3>
-              <p class="timeline-desc" data-i18n="story2-desc">"Ketagihan" trip bersama, kami selalu memastikan untuk selalu menyisihkan waktu untuk menjelajahi dunia bersama.</p>
+              <p class="timeline-desc" data-i18n="story2-desc">Bepergian bersama telah menjadi bagian yang kami tekuni; kami selalu meluangkan waktu untuk berdua, menjelajahi dunia, dan mengumpulkan cerita di setiap langkah perjalanan kami.</p>
             </div>
           </div>
 
@@ -1356,7 +1348,7 @@
             <div class="timeline-content">
               <p class="timeline-year" data-i18n="timeline-year-id3">Lintas benua</p>
               <h3 class="timeline-title" data-i18n="story3-title">4 Jam Beda Waktu</h3>
-              <p class="timeline-desc" data-i18n="story3-desc">Dua tahun menjalani hubungan jarak jauh, tapi semua terasa mudah jika dijalani dengan orang yang tepat.</p>
+              <p class="timeline-desc" data-i18n="story3-desc">Dua tahun dipisahkan jarak dan waktu, namun segalanya terasa dekat ketika dijalani dengan orang yang tepat.</p>
             </div>
             <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
             
@@ -1406,42 +1398,15 @@
   <section id="events">
     <div class="section-inner reveal">
       <p class="section-label" style="color:var(--gold)" data-i18n="events-label">Rangkaian Acara</p>
-      <h2 class="section-title" style="color:var(--cream)" data-i18n="events-title">Turut Berbahagia</h2>
+      <h2 class="section-title" style="color:var(--cream)" data-i18n="events-title">Mohon Do'a Restu</h2>
       <div class="line-divider"><span style="color:var(--gold)">🕯</span></div>
-
-      <div class="events-grid">
-
-        <!-- KINA GECESI -->
-        <div class="event-card">
-          <div class="event-icon">🕯</div>
-          <p class="event-label" data-i18n="event1-label">Malam Henna</p>
-          <h3 class="event-name">Kına Gecesi</h3>
-          
-          <p style="font-family:'Jost',sans-serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--terracotta); text-transform:uppercase; margin-bottom:1rem; font-weight:500;" data-i18n="close-relative">
-            Hanya Keluarga Dekat
-          </p>
-
-          <p class="event-detail">
-            <strong data-i18n="date-label">Tanggal</strong>
-            <span data-i18n="kinadate-trans">Kamis, 11 Juni 2026</span>
-          </p>
-          <p class="event-detail">
-            <strong data-i18n="time-label">Waktu</strong>
-            <span data-i18n="time-id"> 22:00 WIB</span>
-          </p>
-          <p class="event-detail">
-            <strong data-i18n="venue-label">Lokasi</strong>
-            Kalenderhane, Karatay/Konya, Türkiye
-          </p>
-        </div>
 
         <!-- NIKAH -->
         <div class="event-card">
           <div class="event-icon">💍</div>
-          <p class="event-label" data-i18n="event2-label">Ijab Kabul & Perayaan</p>
-          <h3 class="event-name">Nikkah</h3>
+          <h3 class="event-label" data-i18n="event2-label">Ijab Kabul & Perayaan</h3>
           <p class="event-detail">
-            <strong data-i18n="date-label">Tanggal</strong>
+            <strong data-i18n="date-label">Hari dan Tanggal</strong>
             <span data-i18n="nikkahdate-trans">Sabtu, 13 Juni 2026 </span>
           </p>
           <p class="event-detail">
@@ -1450,12 +1415,11 @@
           </p>
           <p class="event-detail">
             <strong data-i18n="venue-label">Lokasi</strong>
-            Karatay Evlendirme Dairesi<br>Çimenlik, Karatay/Konya, Türkiye
+            Karatay Düğün Salonu<br>Çimenlik, Karatay/Konya, Türkiye
           </p>
           <a href="https://maps.app.goo.gl/dhGdz5ukC4tadizB8" target="_blank" class="map-btn" data-i18n="map-btn">🗺 Buka Maps</a>
         </div>
 
-      </div>
     </div>
   </section>
 
@@ -1467,11 +1431,10 @@
       <div class="line-divider"><span>🌸</span></div>
 
       <div class="countdown-tabs">
-        <button class="countdown-tab active" onclick="switchCountdown('kina')" data-i18n="kina-tab">Kına Gecesi</button>
         <button class="countdown-tab" onclick="switchCountdown('nikah')" data-i18n="nikah-tab">Nikkah</button>
       </div>
 
-      <p class="countdown-event-label" id="countdown-event-label">11 Juni 2026 · Kına Gecesi</p>
+      <p class="countdown-event-label" id="countdown-event-label">13 Juni 2026 · Nikkah</p>
 
       <div class="countdown-display">
         <div class="countdown-unit">
@@ -1602,20 +1565,20 @@ const translations = {
     'timeline-year-id2': 'Momen Spesial',
     'timeline-year-id3': 'Lintas Benua',
     'timeline-year-id4': 'Selamanya',
-    'story-title': 'Our Story',
+    'story-title': 'Cerita Kami',
     'story1-title': 'Pertama Bertemu',
-    'story1-desc': 'Dari teman diskusi belajar, diskusi trip ke Norwegia, toast fairy, hingga "first date" ke kuburan Enschede, cerita kami dimulai.',
+    'story1-desc': 'Berawal dari teman diskusi belajar, berlanjut ke obrolan tentang perjalanan ke Norwegia, cerita “toast fairy”, hingga “kencan pertama” yang tak biasa di kuburan Enschede—dari sanalah kisah kami dimulai.',
     'story2-title': 'Mulai Bersama',
-    'story2-desc': '"Ketagihan" trip bersama, kami selalu memastikan untuk selalu menyisihkan waktu untuk menjelajahi dunia bersama.',
+    'story2-desc': 'Bepergian bersama telah menjadi bagian yang kami tekuni; kami selalu meluangkan waktu untuk berdua, menjelajahi dunia, dan mengumpulkan cerita di setiap langkah perjalanan kami.',
     'story3-title': '4 Jam Beda Waktu',
-    'story3-desc': 'Dua tahun menjalani hubungan jarak jauh, tapi semua terasa mudah jika dijalani dengan orang yang tepat.',
+    'story3-desc': 'Dua tahun dipisahkan jarak dan waktu, namun segalanya terasa dekat ketika dijalani dengan orang yang tepat.',
     'story4-title': 'Ya, Selamanya.',
     'story4-desc': 'Dan kini, saatnya kami menjadikan segalanya resmi — dengan doa, cinta, dan keluarga di sisi kami.',
     'events-label': 'Rangkaian Acara',
-    'events-title': 'Turut Berbahagia',
+    'events-title': 'Mohon Do\'a Restu',
     'event1-label': 'Malam Henna',
     'event2-label': 'Ijab Kabul & Perayaan',
-    'date-label': 'Tanggal',
+    'date-label': 'Hari dan Tanggal',
     'time-label': 'Waktu',
     'venue-label': 'Lokasi',
     'map-btn': '🗺 Buka Maps',
@@ -1645,15 +1608,16 @@ const translations = {
     'nikkahdate-trans': 'Sabtu, 13 Juni 2026',
     'kinadate-trans': 'Kamis, 11 Juni 2026',
     'close-relative': 'Hanya Keluarga Dekat',
-    'time-id': '22:00 WIB'
+    'time-id': '22:00 WIB',
+    'stream-note': '*Link akan diaktifkan pada hari pelaksanaan'
   },
   en: {
     'cover-subtitle': 'Wedding Invitation',
     'open-btn': 'Open Invitation',
     'quran-label': 'The Word of Allah SWT',
     'quran-ref-id': "Qur’an, Ar-Rum 21",
-    'quran-trans': '"And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy. Indeed in that are signs for a people who give thought."',
-    'doa-nikah': 'O Allah, unite our hearts in a bond of love that You are pleased with.<br>Make this marriage the beginning of our long worship to You.<br>Bestow upon us blessings, faithfulness, and compassion between us.<br><em>Aamiin Ya Rabbal \'Aalamiin.</em>',
+    'quran-trans': 'And among His signs is that He created for you spouses from among yourselves so that you may find tranquility in them, and He has placed between you affection and mercy. Indeed, in that are signs for people who reflect.',
+    'doa-nikah': 'O Allah, unite our hearts in a bond of love that You are pleased with.<br>Make this marriage the beginning of our lifelong devotion to You.<br>Grant us blessings, loyalty, and affection between us.<br><em>Aamiin Ya Rabbal \'Aalamiin.</em>',
     'couple-label': 'The Couple',
     'couple-title': 'With Endless Gratitude',
     'daughter-of': 'Daughter of',
@@ -1665,18 +1629,18 @@ const translations = {
     'timeline-year-id3': 'Across the Continent',
     'timeline-year-id4': 'Forever',
     'story1-title': 'Starting Together',
-    'story1-desc': 'From study discussions, planning a trip to Norway, toast fairy moments, to a “first date” at a cemetery in Enschede — that’s where our story began.',
+    'story1-desc': 'What started as study discussions grew into conversations about a trip to Norway, stories of the “toast fairy,” and even an unconventional first date at a cemetery in Enschede—that’s where our story began.',
     'story2-title': 'Walking Together',
-    'story2-desc': 'Hooked on traveling together, we always make sure to set aside time to explore the world side by side.',
+    'story2-desc': 'We’ve turned traveling together into a passion; always making time for ourselves to explore the world side by side, discover new places, and collect our own stories in every journey.',
     'story3-title': '4 Hours Apart',
-    'story3-desc': 'Two years of long distance, yet everything feels easy when it’s with the right person.',
+    'story3-desc': 'Two years apart, across continents and time zones, yet everything felt lighter with the right person by our side.',
     'story4-title': 'Yes, Forever.',
     'story4-desc': 'And now, it\'s time to make it official — with prayers, love, and family by our side.',
     'events-label': 'Our Celebration',
     'events-title': 'You Are Invited',
     'event1-label': 'Henna Night',
     'event2-label': 'Wedding & Celebration',
-    'date-label': 'Date',
+    'date-label': 'Day and Date',
     'time-label': 'Time',
     'venue-label': 'Venue',
     'map-btn': '🗺 Open Maps',
@@ -1706,7 +1670,8 @@ const translations = {
     'nikkahdate-trans': 'Saturday, 13 June 2026',
     'kinadate-trans': 'Thursday, 11 June 2026',
     'close-relative': 'Only Close Relatives',
-    'time-id': '6pm UTC+3 (10pm UTC+7)'
+    'time-id': '6pm UTC+3 (10pm UTC+7)',
+    'stream-note': '*The link will be activated on the day of the event'
   },
   tr: {
     'cover-subtitle': 'Düğün Davetiyesi',
@@ -1736,8 +1701,8 @@ const translations = {
     'events-label': 'Kutlama Programı',
     'events-title': 'Davetlisiniz',
     'event1-label': 'Kına Gecesi',
-    'event2-label': 'Nikah & Kutlama',
-    'date-label': 'Tarih',
+    'event2-label': 'Nikkah & Düğün',
+    'date-label': 'Gün ve Tarih',
     'time-label': 'Saat',
     'venue-label': 'Mekan',
     'map-btn': '🗺 Haritayı Aç',
@@ -1767,7 +1732,8 @@ const translations = {
     'nikkahdate-trans': 'Cumartesi, 13 Haziran 2026',
     'kinadate-trans': 'Perşembe, 11 Haziran 2026',
     'close-relative': 'Sadece Yakın Aile',
-    'time-id': '18:00'
+    'time-id': '18:00',
+    'stream-note': '*Bağlantı, etkinlik günü aktif hale getirilecektir'
   }
 };
 
