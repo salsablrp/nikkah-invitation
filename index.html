@@ -1186,7 +1186,7 @@
       Serhat
     </h1>
     <div class="cover-divider"></div>
-    <p class="cover-date" data-i18n="cover-subtitle-date">13 June 2026 · Konya, Türkiye</p>
+    <p class="cover-date" data-i18n="cover-subtitle-date">11 · 13 June 2026 · Konya, Türkiye</p>
     
     <div class="lang-select-wrapper">
       <p class="lang-select-title">PILIH BAHASA / SELECT LANGUAGE / DİL SEÇİN</p>
@@ -1729,6 +1729,7 @@ const translations = {
 };
 
 let currentLang = 'id';
+let countdownTarget = new Date('2026-06-13T19:00:00+03:00'); // Istanbul time (UTC+3)
 let countdownInterval;
 
 function setLang(lang) {
