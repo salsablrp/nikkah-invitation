@@ -235,6 +235,44 @@
     color: var(--cream);
   }
 
+  /* ── AUDIO CONTROL BUTTON ── */
+  .audio-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 1.5rem; /* Placed on the bottom left to balance the layout */
+    z-index: 999;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: rgba(245,239,230,0.9);
+    border: 1px solid var(--warm-brown);
+    color: var(--warm-brown);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+    
+    /* Hidden initially, just like the language switcher */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+  }
+
+  /* When the invitation is opened, it slides up and appears */
+  .audio-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .audio-btn:hover {
+    background: var(--warm-brown);
+    color: var(--cream);
+  }
+
   /* ── MAIN CONTENT ── */
   #main {
     opacity: 0;
@@ -1069,11 +1107,12 @@
     .timeline-item:nth-child(even) .carousel-wrapper { 
       order: unset; 
       width: 100%; 
+      max-width: 260px; 
     }
 
-    /* Makes the photos slightly shorter on mobile so you can read the text without scrolling too much */
     .timeline-photo-container {
-      aspect-ratio: 4/3; 
+      aspect-ratio: 3/4 !important; 
+      width: 100%;
     }
 
     .events-grid { grid-template-columns: 1fr; }
@@ -1102,7 +1141,7 @@
       Serhat
     </h1>
     <div class="cover-divider"></div>
-    <p class="cover-date">11 · 13 Juni 2026 · Konya, Türkiye</p>
+    <p class="cover-date" data-i18n="cover-subtitle-date">11 · 13 June 2026 · Konya, Türkiye</p>
     
     <div class="lang-select-wrapper">
       <p class="lang-select-title">PILIH BAHASA / SELECT LANGUAGE / DİL SEÇİN</p>
@@ -1220,7 +1259,7 @@
               <div class="timeline-photo-container">
                 <img src="story1-1.JPG" alt="Story 1-1">
                 <img src="story1-2.jpg" alt="Story 1-2">
-                <img src="story1-3.JPG" alt="Story 1-3">
+                <img src="story1-3.jpg" alt="Story 1-3">
                 <img src="story1-4.jpg" alt="Story 1-4">
                 <img src="story1-5.jpg" alt="Story 1-5">
               </div>
@@ -1235,9 +1274,9 @@
             <div class="carousel-wrapper">
               <button class="carousel-arrow left-arrow">&#10094;</button>
               <div class="timeline-photo-container">
-                <img src="story2-1.JPG" alt="Story 2-1">
+                <img src="story2-1.jpg" alt="Story 2-1">
                 <img src="story2-2.jpg" alt="Story 2-2">
-                <img src="story2-3.JPG" alt="Story 2-3">
+                <img src="story2-3.jpg" alt="Story 2-3">
                 <img src="story2-4.jpg" alt="Story 2-4">
                 <img src="story2-5.jpg" alt="Story 2-5">
               </div>
@@ -1265,7 +1304,7 @@
             <div class="carousel-wrapper">
               <button class="carousel-arrow left-arrow">&#10094;</button>
               <div class="timeline-photo-container">
-                <img src="story3-1.JPG" alt="Story 3-1">
+                <img src="story3-1.jpg" alt="Story 3-1">
                 <img src="story3-2.jpeg" alt="Story 3-2">
                 <img src="story3-3.jpeg" alt="Story 3-3">
                 <img src="story3-4.jpeg" alt="Story 3-4">
@@ -1282,9 +1321,9 @@
             <div class="carousel-wrapper">
               <button class="carousel-arrow left-arrow">&#10094;</button>
               <div class="timeline-photo-container">
-                <img src="story4-1.JPG" alt="Story 4-1">
+                <img src="story4-1.jpg" alt="Story 4-1">
                 <img src="story4-2.jpeg" alt="Story 4-2">
-                <img src="story4-3.JPG" alt="Story 4-3">
+                <img src="story4-3.jpg" alt="Story 4-3">
                 <img src="story4-4.jpeg" alt="Story 4-4">
                 <img src="story4-5.jpg" alt="Story 4-5">
               </div>
@@ -1317,9 +1356,14 @@
           <div class="event-icon">🕯</div>
           <p class="event-label" data-i18n="event1-label">Malam Henna</p>
           <h3 class="event-name">Kına Gecesi</h3>
+          
+          <p style="font-family:'Jost',sans-serif; font-size:0.65rem; letter-spacing:0.15em; color:var(--terracotta); text-transform:uppercase; margin-bottom:1rem; font-weight:500;" data-i18n="close-relative">
+            Hanya Keluarga Dekat
+          </p>
+
           <p class="event-detail">
             <strong data-i18n="date-label">Tanggal</strong>
-            Kamis, 11 Juni 2026
+            <span data-i18n="kinadate-trans">Kamis, 11 Juni 2026</span>
           </p>
           <p class="event-detail">
             <strong data-i18n="time-label">Waktu</strong>
@@ -1327,9 +1371,8 @@
           </p>
           <p class="event-detail">
             <strong data-i18n="venue-label">Lokasi</strong>
-            Ankara Cd. No:40<br>Kalenderhane, Karatay/Konya, Türkiye
+            Kalenderhane, Karatay/Konya, Türkiye
           </p>
-          <a href="https://maps.app.goo.gl/sSe9VHwsHQN6EF869" target="_blank" class="map-btn" data-i18n="map-btn">🗺 Buka Maps</a>
         </div>
 
         <!-- NIKAH -->
@@ -1339,7 +1382,7 @@
           <h3 class="event-name">Nikkah & Dansa</h3>
           <p class="event-detail">
             <strong data-i18n="date-label">Tanggal</strong>
-            Sabtu, 13 Juni 2026
+            <span data-i18n="nikkahdate-trans">Sabtu, 13 Juni 2026 </span>
           </p>
           <p class="event-detail">
             <strong data-i18n="time-label">Waktu</strong>
@@ -1489,8 +1532,14 @@
 
 <!-- AUDIO -->
 <audio id="bg-audio" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9f2d5c5d41.mp3" type="audio/mpeg">
+  <!-- I recommend changing your actual file to an .mp3 if possible! -->
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
+
+<!-- AUDIO CONTROL BUTTON -->
+<button id="audio-control" class="audio-btn" onclick="toggleAudio()">
+  🎵
+</button>
 
 <script>
 // ── SCROLL RESTORATION FIX ──
@@ -1570,6 +1619,10 @@ const translations = {
     'wish-sending': 'Mengirim... ⏳',
     'wish-send-error': 'Maaf, gagal mengirim doa. Silakan coba lagi.',
     'wish-empty': 'Belum ada ucapan. Jadilah yang pertama! ✨',
+    'cover-subtitle-date': '11 · 13 Juni 2026 · Konya, Türkiye',
+    'nikkahdate-trans': 'Sabtu, 13 Juni 2026',
+    'kinadate-trans': 'Kamis, 11 Juni 2026',
+    'close-relative': 'Hanya Keluarga Dekat'
   },
   en: {
     'cover-subtitle': 'Wedding Invitation',
@@ -1638,6 +1691,10 @@ const translations = {
     'wish-sending': 'Sending... ⏳',
     'wish-send-error': 'Sorry, failed to send wish. Please try again.',
     'wish-empty': 'No wishes yet. Be the first! ✨',
+    'cover-subtitle-date': '11 · 13 June 2026 · Konya, Türkiye',
+    'nikkahdate-trans': 'Saturday, 13 June 2026',
+    'kinadate-trans': 'Thursday, 11 June 2026',
+    'close-relative': 'Only Close Relatives'
   },
   tr: {
     'cover-subtitle': 'Düğün Davetiyesi',
@@ -1706,6 +1763,10 @@ const translations = {
     'wish-sending': 'Gönderiliyor... ⏳',
     'wish-send-error': 'Üzgünüz, dilek gönderilemedi. Lütfen tekrar deneyin.',
     'wish-empty': 'Henüz dilek yok. İlk siz olun! ✨',
+    'cover-subtitle-date': '11 · 13 Haziran 2026 · Konya, Türkiye',
+    'nikkahdate-trans': 'Cumartesi, 13 Haziran 2026',
+    'kinadate-trans': 'Perşembe, 11 Haziran 2026',
+    'close-relative': 'Sadece Yakın Aile'
   }
 };
 
@@ -1744,26 +1805,57 @@ function setLang(lang) {
   updateCountdownLabels();
 }
 
+// ── AUDIO CONTROL LOGIC ──
+let isPlaying = false;
+
+function toggleAudio() {
+  const audio = document.getElementById('bg-audio');
+  const audioBtn = document.getElementById('audio-control');
+
+  if (isPlaying) {
+    audio.pause();
+    audioBtn.innerHTML = '🔇';
+    isPlaying = false;
+  } else {
+    audio.play();
+    audioBtn.innerHTML = '🎵';
+    isPlaying = true;
+  }
+}
+
 function openInvitation(lang) {
   // 1. Set the language from the button clicked
   setLang(lang);
 
   const main = document.getElementById('main');
   const switcher = document.getElementById('lang-switcher');
+  const audioBtn = document.getElementById('audio-control');
 
   // 2. Unlock the scrolling so the user can go down
   document.body.classList.remove('locked');
 
-  // 3. Make main content and language switcher visible
+  // 3. Make main content, language switcher, and audio button visible
   main.classList.add('visible');
   switcher.classList.add('visible');
+  audioBtn.classList.add('visible'); // SHOWS THE NEW BUTTON
 
   // 4. Smooth scroll down to the Quran section (main body)
   main.scrollIntoView({ behavior: 'smooth' });
   
-  // 5. Play audio (with a catch block to prevent console errors if browser blocks autoplay)
+  // 5. Play audio safely
   const audio = document.getElementById('bg-audio');
-  audio.play().catch(e => console.log("Audio play prevented:", e));
+  audio.volume = 0.5; // Optional: set volume to 50% so it's not too loud
+  
+  audio.play().then(() => {
+    // If the browser allows it to play, set state to true and show music note
+    isPlaying = true;
+    audioBtn.innerHTML = '🎵';
+  }).catch(e => {
+    // If Safari/Chrome blocks it, don't break the site. Just show it as muted.
+    console.log("Audio play prevented by browser:", e);
+    isPlaying = false;
+    audioBtn.innerHTML = '🔇'; 
+  });
 
   // 6. Start features
   initScrollReveal();
