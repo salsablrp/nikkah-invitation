@@ -1499,7 +1499,7 @@
         </p>
 
         <!-- IJAB QABUL - 12 JUNI -->
-        <div style="margin: 2.5rem 0; padding: 2rem; border: 1px solid var(--light-gold); border-radius: 8px; background: rgba(245,239,230,0.3);">
+        <div id ="ijab-section" style="margin: 2.5rem 0; padding: 2rem; border: 1px solid var(--light-gold); border-radius: 8px; background: rgba(245,239,230,0.3);">
           <h3 class="timeline-title" data-i18n="ijabqabul">Ijab Qabul</h3>
           <p class="timeline-year" data-i18n="ijabqabul-date">Jum'at, 12 Juni 2026 | 22:00</p>
 
@@ -1844,6 +1844,16 @@ const translations = {
 
 let currentLang = 'id';
 
+function updateLanguageVisibility() {
+  const ijabSection = document.getElementById('ijab-section');
+  
+  if (currentLang === 'id') {
+    ijabSection.style.display = 'block';
+  } else {
+    ijabSection.style.display = 'none';
+  }
+}
+
 function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
@@ -1872,6 +1882,8 @@ function setLang(lang) {
     document.getElementById('doa-nikah').innerHTML = t['doa-nikah'] || '';
   }
 
+  // NEW: Update language visibility for livestream section
+  updateLanguageVisibility();
 }
 
 // ── AUDIO CONTROL LOGIC ──
