@@ -7,7 +7,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💍</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Jost:wght@300;400;500&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&family=Jost:wght@300;400;500&family=Scheherazade+New:wght@400&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -47,8 +47,8 @@
   #cover {
     position: relative;
     width: 100%;
-    height: 100vh;     /* Fallback for older browsers */
-    height: 100svh;    /* NEW: Perfectly fits mobile screens with menu bars */
+    height: 100vh;
+    height: 100svh;
     background: var(--deep-brown);
     display: flex;
     flex-direction: column;
@@ -241,7 +241,7 @@
   .audio-btn {
     position: fixed;
     bottom: 1.5rem;
-    left: 1.5rem; /* Placed on the bottom left to balance the layout */
+    left: 1.5rem;
     z-index: 999;
     width: 45px;
     height: 45px;
@@ -257,13 +257,11 @@
     backdrop-filter: blur(8px);
     transition: all 0.4s ease;
     
-    /* Hidden initially, just like the language switcher */
     opacity: 0;
     pointer-events: none;
     transform: translateY(20px);
   }
 
-  /* When the invitation is opened, it slides up and appears */
   .audio-btn.visible {
     opacity: 1;
     pointer-events: auto;
@@ -308,17 +306,17 @@
   .line-divider {
     display: flex;
     align-items: center;
-    justify-content: center; /* Forces absolute center alignment */
-    width: 100%;             /* Browser fix: explicitly sets the width */
-    max-width: 400px;        /* Keeps the lines looking elegant, not too stretched */
-    margin: 1.5rem auto;     /* Centers the entire box */
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 1.5rem auto;
     gap: 1rem;
   }
 
   .line-divider::before, .line-divider::after {
     content: '';
-    display: block;          /* Browser fix: forces empty elements to render */
-    flex: 1 1 0%;            /* Browser fix: forces strict, equal growing */
+    display: block;
+    flex: 1 1 0%;
     height: 2px;
     background: linear-gradient(to right, transparent, var(--warm-brown) 10%, var(--warm-brown) 90%, transparent);
     opacity: 0.8;
@@ -517,7 +515,7 @@
   .timeline {
     position: relative;
     margin-top: 3rem;
-    z-index: 1; /* Creates a proper stacking context for the line */
+    z-index: 1;
   }
 
   .timeline::before {
@@ -526,11 +524,11 @@
     left: 50%;
     top: 0;
     bottom: 0;
-    width: 2px; /* Increased from 1px so it doesn't vanish on phone screens */
+    width: 2px;
     background: linear-gradient(to bottom, transparent, var(--warm-brown) 5%, var(--warm-brown) 95%, transparent);
-    opacity: 0.5; /* Slightly increased opacity so it stands out beautifully against the cream background */
+    opacity: 0.5;
     transform: translateX(-50%);
-    z-index: -1; /* Pushes the line safely behind the dots and photos */
+    z-index: -1;
   }
 
   .timeline-item {
@@ -608,89 +606,6 @@
     object-fit: cover;
   }
 
-  /* Wrapper to hold the arrows relative to the photos */
-  .carousel-wrapper {
-    position: relative;
-    width: 100%;
-  }
-
-  .timeline-photo-container {
-    display: flex;
-    overflow-x: auto; /* Enables horizontal scrolling */
-    overflow-y: hidden; /* Prevents vertical bouncing */
-    scroll-snap-type: x mandatory;
-    gap: 10px;
-    width: 100%;
-    aspect-ratio: 3/4;
-    background: var(--parchment);
-    border-radius: 4px;
-    border: 2px solid var(--light-gold);
-    align-items: center;
-    color: var(--text-light);
-    font-size: 0.7rem;
-    text-align: center;
-    
-    /* Hides the ugly default scrollbar but keeps the scroll functionality */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-  }
-
-  /* Hides scrollbar for Chrome, Safari and Opera */
-  .timeline-photo-container::-webkit-scrollbar {
-    display: none;
-  }
-
-  .timeline-photo-container img {
-    scroll-snap-align: start; 
-    flex: 0 0 100%; 
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 2px;
-  }
-
-  /* Arrow Styling */
-  .carousel-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); /* Perfectly centers the arrows vertically */
-    background: rgba(255, 255, 255, 0.8); /* Slight white background so they stand out */
-    color: #8B4513; /* SaddleBrown */
-    border: none;
-    font-size: 1.5rem;
-    padding: 0.5rem 0.8rem;
-    cursor: pointer;
-    z-index: 10;
-    border-radius: 50%;
-    transition: background 0.2s;
-  }
-
-  .carousel-arrow:hover {
-    background: rgba(255, 255, 255, 1);
-  }
-
-  .left-arrow {
-    left: 5px;
-  }
-
-  .right-arrow {
-    right: 5px;
-  }
-
-  .photo-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-    color: var(--text-light);
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-  }
-
-  .photo-placeholder-icon {
-    font-size: 1.5rem;
-  }
-
   /* ── EVENTS SECTION ── */
   #events {
     background: var(--deep-brown);
@@ -701,7 +616,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   }
 
   .event-card {
@@ -846,12 +761,69 @@
     text-align: center;
   }
 
+  .livestream-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .livestream-tab {
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--warm-brown);
+    background: transparent;
+    color: var(--warm-brown);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .livestream-tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .livestream-tab:hover {
+    background: rgba(201,168,76,0.1);
+  }
+
+  .livestream-tab.active {
+    background: var(--warm-brown);
+    color: var(--cream);
+  }
+
+  .livestream-tab.active::after {
+    transform: scaleX(1);
+  }
+
   .livestream-box {
     border: 1px solid var(--light-gold);
     padding: 3rem 2rem;
     text-align: center;
     position: relative;
     background: rgba(245,239,230,0.5);
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .livestream-box.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   .livestream-desc {
@@ -885,17 +857,17 @@
   /* ── CUTE THUMBNAIL STYLING ── */
   .thumbnail-wrapper {
     position: relative;
-    max-width: 450px; /* Keeps it perfectly sized on desktop */
-    margin: 0 auto 2rem auto; /* Centers it and adds space below */
+    max-width: 450px;
+    margin: 0 auto 2rem auto;
     cursor: pointer;
   }
 
   .stream-thumbnail {
     width: 100%;
     height: auto;
-    border-radius: 12px; /* Soft, cute corners */
-    border: 3px solid var(--light-gold); /* Theme matching border */
-    box-shadow: 0 8px 24px rgba(74, 55, 40, 0.15); /* Soft, elegant drop shadow */
+    border-radius: 12px;
+    border: 3px solid var(--light-gold);
+    box-shadow: 0 8px 24px rgba(74, 55, 40, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: block; 
   }
@@ -912,7 +884,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(245, 239, 230, 0.85); /* Frosty cream background */
+    background: rgba(245, 239, 230, 0.85);
     color: var(--terracotta);
     width: 55px;
     height: 55px;
@@ -925,7 +897,7 @@
     border: 2px solid var(--warm-brown);
     opacity: 0.9;
     transition: all 0.3s ease;
-    pointer-events: none; /* Stops it from blocking clicks */
+    pointer-events: none;
   }
 
   /* The play button turns solid terracotta when hovered */
@@ -980,12 +952,11 @@
   }
   .wish-submit:hover { background: var(--light-gold); }
 
-.wishes-list {
+  .wishes-list {
     margin-top: 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    /* We removed max-height and overflow-y so the 5 messages sit cleanly */
   }
 
   /* ── PAGINATION BUTTONS ── */
@@ -998,1112 +969,591 @@
   }
 
   .page-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--warm-brown);
     background: transparent;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+    color: var(--warm-brown);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.2s;
+  }
+  .page-btn.active, .page-btn:hover { background: var(--warm-brown); color: var(--cream); }
+
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 
-  .page-btn:hover:not(:disabled) {
-    background: var(--gold);
-    color: var(--deep-brown);
-  }
-
-  /* Grays out the button if they are on the first or last page */
-  .page-btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    border-color: rgba(201,168,76,0.3);
-  }
-
-  .page-info {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.85rem;
-    color: var(--light-gold);
-    letter-spacing: 0.2em;
-  }
-
-  .wish-item {
-    background: rgba(245,239,230,0.06);
-    border-left: 2px solid var(--gold);
-    padding: 1rem 1.2rem;
-  }
-
-  .wish-name {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    color: var(--gold);
-    margin-bottom: 0.3rem;
-  }
-
-  .wish-message {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: rgba(245,239,230,0.75);
-    line-height: 1.7;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--text-dark);
-    color: var(--cream);
-    text-align: center;
-    padding: 4rem 1.5rem;
-  }
-
-  .footer-names {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 7vw, 3.5rem);
-    font-weight: 300;
-    color: var(--cream);
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-hashtag {
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    color: var(--gold);
-    margin-bottom: 2rem;
-  }
-
-  .footer-note {
-    font-size: 0.7rem;
-    color: rgba(245,239,230,0.3);
-    letter-spacing: 0.1em;
-  }
-
-  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  @keyframes floatY {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-  }
-
   @keyframes floatLeaf {
-    0% { transform: translateY(-10%) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.12; }
-    90% { opacity: 0.08; }
-    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.3; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 600px) {
-    .couple-grid {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-    .ampersand-center { font-size: 3rem; }
-
-    .cover-content {
-      transform: translateY(-3%); /* Lifts the whole block up slightly */
-    }
-    .lang-select-wrapper {
-      margin-top: 1.5rem; /* Brings the buttons a bit closer to the date */
-    }
-    .cover-names {
-      font-size: 4.5rem; /* Slightly adjusts the massive name size so it fits perfectly */
-    }
-
-    .timeline::before { 
-      left: 20px; 
-      transform: none; /* Stops it from shifting into the margin */
-    }
-    
-    /* Forces all timeline items (even and odd) to stack neatly */
-    .timeline-item, 
-    .timeline-item:nth-child(even) { 
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-left: 50px; /* Makes room for the line on the left */
-      gap: 0.8rem;
-      position: relative;
-    }
-    
-    .timeline-dot,
-    .timeline-item:nth-child(even) .timeline-dot { 
-      position: absolute;
-      left: 14px; /* Centers the dot perfectly over the 20px line */
-      top: 5px; /* Aligns with the title text */
-      order: unset;
-    }
-    
-    .timeline-content,
-    .timeline-item:nth-child(even) .timeline-content { 
-      text-align: left !important; 
-      order: 1;
-      width: 100%;
-    }
-    
-    .carousel-wrapper,
-    .timeline-item:nth-child(even) .carousel-wrapper { 
-      order: 2; 
-      width: 100%; 
-      max-width: 260px; 
-    }
-
-    .timeline-photo-container {
-      aspect-ratio: 3/4 !important; 
-      width: 100%;
-    }
-
-    .countdown-sep { display: none; }
+  @media (max-width: 768px) {
+    section { padding: 3rem 1rem; }
+    .couple-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0; }
+    .timeline-item .timeline-content { order: 1; }
+    .timeline-item .timeline-photo { order: 2; margin-top: 1rem; }
+    .timeline-item .timeline-dot { order: 3; position: relative; margin-top: 1rem; }
+    .timeline-item:nth-child(even) .timeline-content { text-align: left; }
+    .countdown-display { gap: 0.8rem; }
+    .livestream-tabs { gap: 0.5rem; }
   }
-
 </style>
 </head>
-<body class="locked">
 
-<!-- ══ FLOATING LEAVES & COVER ══ -->
+<body>
 <div id="cover">
   <div class="cover-bg"></div>
-  <!-- leaves generated by JS -->
   <div class="cover-content">
-    <span class="cover-ornament">🌿</span>
-    <p class="cover-subtitle" data-i18n="cover-subtitle">Wedding Invitation</p>
+    <div class="cover-ornament">💍</div>
+    <p class="cover-subtitle">Selamat Datang</p>
     <h1 class="cover-names">
       Salsa
-      <span class="ampersand">&amp;</span>
+      <span class="ampersand">&</span>
       Serhat
     </h1>
     <div class="cover-divider"></div>
-    <p class="cover-date" data-i18n="cover-subtitle-date">11 · 13 June 2026 · Konya, Türkiye</p>
-
-    <div id="guest-greeting-box" style="display: none; margin-top: 2rem; animation: fadeUp 1s 1s forwards; opacity: 0;">
-      <p style="font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--light-gold); text-transform: uppercase;" data-i18n="guest-greet">Kepada Yth. </p>
-      <h3 id="guest-name-display" style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--cream); margin-top: 0.3rem;">Guest Name</h3>
-    </div>
-
-    <!-- BUTTONS FOR UNPERSONALIZED LINKS (Shows 3 languages to choose from) -->
-    <div class="lang-select-wrapper" id="unpersonalized-buttons">
-      <p class="lang-select-title">PILIH BAHASA / SELECT LANGUAGE / DİL SEÇİN</p>
+    <p class="cover-date">12 & 13 Juni 2025</p>
+    <div class="lang-select-wrapper">
+      <p class="lang-select-title">Pilih Bahasa / Select Language</p>
       <div class="lang-btn-group">
-        <button class="open-btn" onclick="openInvitation('id')">Indonesia</button>
-        <button class="open-btn" onclick="openInvitation('en')">English</button>
-        <button class="open-btn" onclick="openInvitation('tr')">Türkçe</button>
+        <button class="open-btn" data-lang="id">Indonesia</button>
+        <button class="open-btn" data-lang="en">English</button>
       </div>
     </div>
-
-    <!-- BUTTON FOR PERSONALIZED LINKS (Shows a single "Open Invitation" button) -->
-    <div class="lang-select-wrapper" id="personalized-button" style="display: none;">
-      <button class="open-btn" onclick="openInvitation(currentLang)" data-i18n="open-btn">Buka Undangan</button>
-    </div>
-
   </div>
+  <!-- Floating leaves -->
+  <div class="leaf" style="top: 10%; left: 5%; animation-duration: 8s; animation-delay: 0s;">🍃</div>
+  <div class="leaf" style="top: 20%; right: 10%; animation-duration: 10s; animation-delay: 2s;">🌿</div>
+  <div class="leaf" style="bottom: 20%; left: 15%; animation-duration: 12s; animation-delay: 4s;">🍂</div>
 </div>
 
-<!-- ══ LANG SWITCHER ══ -->
 <div id="lang-switcher">
-  <button class="lang-btn active" onclick="setLang('id')">ID</button>
-  <button class="lang-btn" onclick="setLang('en')">EN</button>
-  <button class="lang-btn" onclick="setLang('tr')">TR</button>
+  <button class="lang-btn active" data-lang="id">ID</button>
+  <button class="lang-btn" data-lang="en">EN</button>
 </div>
 
-<!-- ══ MAIN ══ -->
-<div id="main">
-
-  <!-- QURAN -->
-  <section id="quran">
-    <div class="section-inner reveal">
-      <p class="section-label" data-i18n="quran-label">Firman Allah SWT</p>
-      <div class="quran-border">
-        <p class="arabic-text">
-          وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
-        </p>
-        <p class="quran-ref" data-i18n="quran-ref-id">QS. Ar-Rum : 21</p>
-        <p class="quran-translation" id="quran-trans">
-          "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
-        </p>
-        <div class="botanical-divider">✦ ❧ ✦</div>
-        <p class="doa-text" id="doa-nikah">
-          Ya Allah, satukanlah hati kami dalam ikatan cinta yang Engkau ridhai.<br>
-          Jadikanlah pernikahan ini sebagai awal dari ibadah panjang kami kepada-Mu.<br>
-          Limpahkan keberkahan, kesetiaan, dan kasih sayang di antara kami.<br>
-          <em>Aamiin Ya Rabbal 'Aalamiin.</em>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- COUPLE -->
-  <section id="couple">
-    <div class="section-inner reveal">
-      <p class="section-label" data-i18n="couple-label">Mempelai</p>
-      <h2 class="section-title" data-i18n="couple-title">Dengan Penuh Rasa Syukur</h2>
-      <div class="line-divider"><span>🌿</span></div>
-
-      <div class="couple-grid">
-        <!-- BRIDE -->
-        <div class="couple-card">
-          <div class="couple-photo">
-            <div class="photo-placeholder">
-              <img src="salsa.jpeg">
-            </div>
-          </div>
-          <p class="couple-name">Salsabila</p>
-          <p class="couple-fullname">Salsabila Ramadhani Prasetya</p>
-          <p class="couple-parents">
-            <span data-i18n="daughter-of">Putri dari</span>
-            Heru Prasetya &amp; Sri Wahyuni
-          </p>
-        </div>
-
-        <div class="ampersand-center">&amp;</div>
-
-        <!-- GROOM -->
-        <div class="couple-card">
-          <div class="couple-photo">
-            <div class="photo-placeholder">
-              <img src="serhat.jpeg">
-            </div>
-          </div>
-          <p class="couple-name">Serhat</p>
-          <p class="couple-fullname">Serhat Sarı</p>
-          <p class="couple-parents">
-            <span data-i18n="son-of">Putra dari</span>
-            Hikmet Sarı &amp; Hatice Sarı
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OUR STORY -->
-    <section id="story">
-      <div class="section-inner">
-        <div class="reveal">
-          <p class="section-label" data-i18n="story-label">Perjalanan Cinta</p>
-          <h2 class="section-title" data-i18n="story-title">Cerita Kami</h2>
-          <div class="line-divider"><span>🍃</span></div>
-        </div>
-
-        <div class="timeline">
-
-          <!-- TIMELINE ITEM 1 -->
-          <div class="timeline-item reveal">
-            <div class="timeline-content">
-              <p class="timeline-year" data-i18n="timeline-year-id1">Awal segalanya</p>
-              <h3 class="timeline-title" data-i18n="story1-title">Pertama Bertemu</h3>
-              <p class="timeline-desc" data-i18n="story1-desc">Berawal dari teman diskusi belajar, berlanjut ke obrolan tentang perjalanan ke Norwegia, cerita “toast fairy”, hingga “kencan pertama” yang tak biasa di kuburan Enschede—dari sanalah kisah kami dimulai.</p>
-            </div>
-            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-            
-            <!-- Carousel 1 -->
-            <div class="carousel-wrapper">
-              <button class="carousel-arrow left-arrow">&#10094;</button>
-              <div class="timeline-photo-container">
-                <img src="story1-1.JPG" alt="Story 1-1">
-                <img src="story1-2.jpg" alt="Story 1-2">
-                <img src="story1-3.jpg" alt="Story 1-3">
-                <img src="story1-4.jpg" alt="Story 1-4">
-                <img src="story1-5.jpg" alt="Story 1-5">
-              </div>
-              <button class="carousel-arrow right-arrow">&#10095;</button>
-            </div>
-          </div>
-
-          <!-- TIMELINE ITEM 2 -->
-          <div class="timeline-item reveal">
-            
-            <!-- Carousel 2 -->
-            <div class="carousel-wrapper">
-              <button class="carousel-arrow left-arrow">&#10094;</button>
-              <div class="timeline-photo-container">
-                <img src="story2-1.jpg" alt="Story 2-1">
-                <img src="story2-2.jpg" alt="Story 2-2">
-                <img src="story2-3.jpg" alt="Story 2-3">
-                <img src="story2-4.jpg" alt="Story 2-4">
-                <img src="story2-5.jpg" alt="Story 2-5">
-              </div>
-              <button class="carousel-arrow right-arrow">&#10095;</button>
-            </div>
-
-            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-            <div class="timeline-content">
-              <p class="timeline-year" data-i18n="timeline-year-id2">Momen spesial</p>
-              <h3 class="timeline-title" data-i18n="story2-title">Mulai Bersama</h3>
-              <p class="timeline-desc" data-i18n="story2-desc">Bepergian bersama telah menjadi bagian yang kami tekuni; kami selalu meluangkan waktu untuk berdua, menjelajahi dunia, dan mengumpulkan cerita di setiap langkah perjalanan kami.</p>
-            </div>
-          </div>
-
-          <!-- TIMELINE ITEM 3 -->
-          <div class="timeline-item reveal">
-            <div class="timeline-content">
-              <p class="timeline-year" data-i18n="timeline-year-id3">Lintas benua</p>
-              <h3 class="timeline-title" data-i18n="story3-title">4 Jam Beda Waktu</h3>
-              <p class="timeline-desc" data-i18n="story3-desc">Dua tahun dipisahkan jarak dan waktu, namun segalanya terasa ringan ketika dijalani dengan orang yang tepat.</p>
-            </div>
-            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-            
-            <!-- Carousel 3 -->
-            <div class="carousel-wrapper">
-              <button class="carousel-arrow left-arrow">&#10094;</button>
-              <div class="timeline-photo-container">
-                <img src="story3-1.jpg" alt="Story 3-1">
-                <img src="story3-2.jpeg" alt="Story 3-2">
-                <img src="story3-3.jpeg" alt="Story 3-3">
-                <img src="story3-4.jpeg" alt="Story 3-4">
-                <img src="story3-5.jpeg" alt="Story 3-5">
-              </div>
-              <button class="carousel-arrow right-arrow">&#10095;</button>
-            </div>
-          </div>
-
-          <!-- TIMELINE ITEM 4 -->
-          <div class="timeline-item reveal">
-            
-            <!-- Carousel 4 -->
-            <div class="carousel-wrapper">
-              <button class="carousel-arrow left-arrow">&#10094;</button>
-              <div class="timeline-photo-container">
-                <img src="story4-1.jpg" alt="Story 4-1">
-                <img src="story4-2.jpeg" alt="Story 4-2">
-                <img src="story4-3.jpg" alt="Story 4-3">
-                <img src="story4-4.jpeg" alt="Story 4-4">
-                <img src="story4-5.jpg" alt="Story 4-5">
-              </div>
-              <button class="carousel-arrow right-arrow">&#10095;</button>
-            </div>
-
-            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
-            <div class="timeline-content">
-              <p class="timeline-year" data-i18n="timeline-year-id4">Selamanya</p>
-              <h3 class="timeline-title" data-i18n="story4-title">Yes, Forever.</h3>
-              <p class="timeline-desc" data-i18n="story4-desc">Dan kini, saatnya kami menjadikan segalanya resmi — dengan doa, cinta, dan keluarga di sisi kami.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-<!-- EVENTS -->
-  <section id="events">
-    <div class="section-inner reveal">
-      <p class="section-label" style="color:var(--gold)" data-i18n="events-label">Rangkaian Acara</p>
-      <h2 class="section-title" style="color:var(--cream)" data-i18n="events-title">Mohon Do'a Restu</h2>
-      <div class="line-divider"><span style="color:var(--gold)">🕯</span></div>
-
-        <!-- GELIN ALMA -->
-        <div class="event-card" style="margin-bottom: 2rem;">
-          <div class="event-icon">🎀</div>
-          <h3 class="event-label" data-i18n="gelin-alma-label">Prosesi Penjemputan Mempelai Wanita</h3>
-          <p class="event-detail">
-            <strong data-i18n="date-label">Hari dan Tanggal</strong>
-            <span data-i18n="nikkahdate-trans">Sabtu, 13 Juni 2026</span>
-          </p>
-          <p class="event-detail">
-            <strong data-i18n="time-label">Waktu</strong>
-            <span data-i18n="gelin-alma-time">21:30 WIB</span>
-          </p>
-          <p class="event-detail">
-            <strong data-i18n="venue-label">Lokasi</strong>
-            Kalenderhane, Ankara Cd. No:40<br>42050 Karatay/Konya, Türkiye
-          </p>
-          <!-- Auto-generated Google Maps search link for the address -->
-          <a href="https://maps.app.goo.gl/Rajoc8b4GTEyayTv7" target="_blank" class="map-btn" data-i18n="map-btn">🗺 Buka Maps</a>
-        </div>
-
-        <!-- NIKAH -->
-        <div class="event-card">
-          <div class="event-icon">💍</div>
-          <h3 class="event-label" data-i18n="event2-label">Ijab Kabul & Perayaan</h3>
-          <p class="event-detail">
-            <strong data-i18n="date-label">Hari dan Tanggal</strong>
-            <span data-i18n="nikkahdate-trans">Sabtu, 13 Juni 2026 </span>
-          </p>
-          <p class="event-detail">
-            <strong data-i18n="time-label">Waktu</strong>
-            <span data-i18n="time-id"> 22:30 WIB</span>
-          </p>
-          <p class="event-detail">
-            <strong data-i18n="venue-label">Lokasi</strong>
-            Karatay Düğün Salonu<br>Çimenlik, Karatay/Konya, Türkiye
-          </p>
-          <a href="https://maps.app.goo.gl/dhGdz5ukC4tadizB8" target="_blank" class="map-btn" data-i18n="map-btn">🗺 Buka Maps</a>
-        </div>
-
-    </div>
-  </section>
-
-  <!-- COUNTDOWN -->
-  <section id="countdown">
-    <div class="section-inner reveal">
-      <p class="section-label" data-i18n="countdown-label">Menghitung Hari</p>
-      <h2 class="section-title" data-i18n="countdown-title">Segera Tiba</h2>
-      <div class="line-divider"><span>🌸</span></div>
-
-      <!-- Tabs removed! Just the elegant date and the numbers remain -->
-      <p class="countdown-event-label" id="countdown-event-label" data-i18n="countdown-date-label">13 Juni 2026 · Ijab Kabul dan Perayaan</p>
-
-      <div class="countdown-display">
-        <div class="countdown-unit">
-          <span class="countdown-num" id="cd-days">--</span>
-          <span class="countdown-label" data-i18n="days">Hari</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="cd-hours">--</span>
-          <span class="countdown-label" data-i18n="hours">Jam</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="cd-minutes">--</span>
-          <span class="countdown-label" data-i18n="minutes">Menit</span>
-        </div>
-        <div class="countdown-sep">:</div>
-        <div class="countdown-unit">
-          <span class="countdown-num" id="cd-seconds">--</span>
-          <span class="countdown-label" data-i18n="seconds">Detik</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIVE STREAM -->
-  <section id="livestream">
-    <div class="section-inner reveal">
-      <p class="section-label" data-i18n="stream-label">Saksikan Bersama</p>
-      <h2 class="section-title" data-i18n="stream-title">Siaran Langsung</h2>
-      <div class="line-divider"><span>📡</span></div>
-
-      <div class="livestream-box">
-        <p class="livestream-desc" data-i18n="stream-desc">
-          Tidak bisa hadir langsung? Kami tetap ingin kamu menjadi bagian dari hari bahagia ini.<br>
-          Saksikan momen sakral kami secara langsung melalui tautan berikut.
-        </p>
-
-        <!-- NEW: Cute Thumbnail Wrapper -->
-        <div class="thumbnail-wrapper">
-          <a href="https://youtube.com/live/c403jcgx-g0" target="_blank" rel="noopener noreferrer"><img src="youtube_thumbnail.jpg" alt="YouTube Live Thumbnail" class="stream-thumbnail">
-          <!-- A cute little decorative play icon overlay to hint it's a video -->
-          <div class="play-hint">▶</div></a>
-        </div>
-
-        <p style="margin-top:1rem; font-size:0.7rem; color:var(--text-light); font-family:'Jost',sans-serif; letter-spacing:0.1em;" data-i18n="stream-note">
-          *Link akan diaktifkan pada hari pelaksanaan
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- WISHES -->
-  <section id="wishes">
-    <div class="section-inner reveal">
-      <p class="section-label" style="color:var(--gold)" data-i18n="wishes-label">Doa & Ucapan</p>
-      <h2 class="section-title" style="color:var(--cream)" data-i18n="wishes-title">Kirim Doa untuk Kami</h2>
-      <div class="line-divider"><span>🌿</span></div>
-
-      <div class="wish-form">
-        <input class="wish-input" id="wish-name" type="text" data-placeholder-i18n="wish-name-placeholder" placeholder="Nama kamu...">
-        <textarea class="wish-textarea" id="wish-message" data-placeholder-i18n="wish-message-placeholder" placeholder="Doa & ucapan untuk Salsa & Serhat..."></textarea>
-        <button class="wish-submit" onclick="submitWish()" data-i18n="wish-submit">Kirim Doa 🌿</button>
-      </div>
-
-      <div class="wishes-list" id="wishes-list">
-        <!-- Wishes will appear here -->
-        <div class="wish-item">
-          <p class="wish-name">Keluarga Besar</p>
-          <p class="wish-message">"Selamat menempuh hidup baru. Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Barakallah! 🌿"</p>
-        </div>
-      </div>
-
-      <div class="pagination-controls" id="wishes-pagination" style="display: none;">
-        <button class="page-btn" id="prev-page" onclick="changePage(-1)">&#10094;</button>
-        <span class="page-info" id="page-info">1 / 1</span>
-        <button class="page-btn" id="next-page" onclick="changePage(1)">&#10095;</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="botanical-divider" style="color:var(--gold); opacity:0.4; margin-bottom:2rem;">🌿 ✦ 🌿</div>
-    <h2 class="footer-names">Salsa <span style="font-style:italic; color:var(--gold)">&amp;</span> Serhat</h2>
-    <p class="footer-hashtag">#SerhatWithASideOfSalsa</p>
-    <p class="footer-note" data-i18n="footer-note">13 Juni 2026 · Konya, Türkiye · Dengan penuh cinta</p>
-    <div class="botanical-divider" style="color:var(--gold); opacity:0.2; margin-top:2rem;">✦ ✦ ✦</div>
-  </footer>
-
-</div><!-- end #main -->
-
-<!-- AUDIO -->
-<audio id="bg-audio" loop>
-  <!-- I recommend changing your actual file to an .mp3 if possible! -->
+<audio id="bgm">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
+<button class="audio-btn" id="audio-toggle">🔊</button>
 
-<!-- AUDIO CONTROL BUTTON -->
-<button id="audio-control" class="audio-btn" onclick="toggleAudio()">
-  🎵
-</button>
+<main id="main">
+  <!-- Quran Section -->
+  <section id="quran">
+    <div class="section-inner">
+      <div class="quran-border">
+        <p class="arabic-text" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+        <p class="quran-ref" data-i18n="quran-ref">Q.S. AN-NUR (24) : 32</p>
+        <p class="quran-translation" data-i18n="quran-translation">
+          Dan kawinkanlah orang-orang yang sendiri diantara kamu dan orang-orang yang layak (menikah) dari hamba-hamba sahayamu yang laki-laki dan hamba-hamba sahayamu yang perempuan. Jika mereka miskin Allah akan memampukan mereka dengan karunia-Nya. Dan Allah Maha Luas (pemberian-Nya) lagi Maha Mengetahui.
+        </p>
+        <p class="doa-text" data-i18n="doa">Semoga shalawat dan salam senantiasa tercurah kepada Nabi Muhammad Shallallahu 'alaihi wa sallam, keluarganya, dan semua pengikutnya hingga akhir zaman.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Couple Section -->
+  <section id="couple">
+    <div class="section-inner">
+      <h2 class="section-title" data-i18n="couple-title">Mempelai</h2>
+      <p class="section-label" data-i18n="couple-label">Pasangan Bahagia</p>
+      
+      <div class="couple-grid">
+        <div class="couple-card">
+          <div class="couple-photo">
+            <img src="serhat.jpeg" alt="Serhat">
+          </div>
+          <h3 class="couple-name">Serhat</h3>
+          <p class="couple-fullname">Muhammadserhat Hidayat</p>
+          <p class="couple-parents">
+            <span data-i18n="son-of">Putra dari</span>
+            Mr. & Mrs. Hidayat
+          </p>
+        </div>
+        
+        <div class="ampersand-center">&</div>
+        
+        <div class="couple-card">
+          <div class="couple-photo">
+            <img src="salsa.jpeg" alt="Salsa">
+          </div>
+          <h3 class="couple-name">Salsa</h3>
+          <p class="couple-fullname">Salsabillah Ramadanti</p>
+          <p class="couple-parents">
+            <span data-i18n="daughter-of">Putri dari</span>
+            Mr. & Mrs. Ramadanti
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section id="story">
+    <div class="section-inner">
+      <h2 class="section-title" data-i18n="story-title">Cerita Kami</h2>
+      <p class="section-label" data-i18n="story-label">Dari Kenalan Hingga Selamanya</p>
+      
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <p class="timeline-year" data-i18n="timeline-year">2019</p>
+            <h3 class="timeline-title" data-i18n="timeline-1-title">Bertemu</h3>
+            <p class="timeline-desc" data-i18n="timeline-1-desc">Kisah dimulai dengan satu pertemuan istimewa...</p>
+          </div>
+          <div class="timeline-dot">
+            <div class="timeline-dot-inner"></div>
+          </div>
+          <div class="timeline-photo"></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <p class="timeline-year" data-i18n="timeline-year">2020</p>
+            <h3 class="timeline-title" data-i18n="timeline-2-title">Jatuh Cinta</h3>
+            <p class="timeline-desc" data-i18n="timeline-2-desc">Setiap hari bersama semakin berarti dan berharga...</p>
+          </div>
+          <div class="timeline-dot">
+            <div class="timeline-dot-inner"></div>
+          </div>
+          <div class="timeline-photo"></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <p class="timeline-year" data-i18n="timeline-year">2021</p>
+            <h3 class="timeline-title" data-i18n="timeline-3-title">Momen Spesial</h3>
+            <p class="timeline-desc" data-i18n="timeline-3-desc">Sebuah pertanyaan yang mengubah segalanya...</p>
+          </div>
+          <div class="timeline-dot">
+            <div class="timeline-dot-inner"></div>
+          </div>
+          <div class="timeline-photo"></div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <p class="timeline-year" data-i18n="timeline-year">2025</p>
+            <h3 class="timeline-title" data-i18n="timeline-4-title">Selamanya</h3>
+            <p class="timeline-desc" data-i18n="timeline-4-desc">Kini saatnya memulai petualangan bersama selamanya...</p>
+          </div>
+          <div class="timeline-dot">
+            <div class="timeline-dot-inner"></div>
+          </div>
+          <div class="timeline-photo"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events">
+    <div class="section-inner">
+      <h2 class="section-title" data-i18n="events-title">Acara Kami</h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+        <div class="event-card">
+          <div class="event-icon">📍</div>
+          <p class="event-label" data-i18n="ijab-qabul">Ijab Qabul</p>
+          <div class="event-detail">
+            <strong data-i18n="event-time">Hari & Jam:</strong>
+            <span data-i18n="ijab-date">Kamis, 12 Juni 2025 | 14:00 - 15:30</span>
+          </div>
+          <div class="event-detail">
+            <strong data-i18n="event-location">Lokasi:</strong>
+            <span data-i18n="ijab-location">Gedung Seruni, Jl. Imam Bonjol No. 35, Jakarta</span>
+          </div>
+          <a href="#" class="map-btn" data-i18n="map-btn">Lihat Lokasi</a>
+        </div>
+
+        <div class="event-card">
+          <div class="event-icon">🍽️</div>
+          <p class="event-label" data-i18n="resepsi">Resepsi</p>
+          <div class="event-detail">
+            <strong data-i18n="event-time">Hari & Jam:</strong>
+            <span data-i18n="resepsi-date">Jumat, 13 Juni 2025 | 18:00 - 23:00</span>
+          </div>
+          <div class="event-detail">
+            <strong data-i18n="event-location">Lokasi:</strong>
+            <span data-i18n="resepsi-location">Ballroom Grand Indonesia, Jl. Budi Utomo No. 10, Jakarta</span>
+          </div>
+          <a href="#" class="map-btn" data-i18n="map-btn">Lihat Lokasi</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Countdown Section -->
+  <section id="countdown">
+    <div class="section-inner">
+      <p class="countdown-event-label" data-i18n="countdown-label">Hitung Mundur</p>
+      
+      <div class="countdown-tabs">
+        <button class="countdown-tab active" data-event="ijab" data-i18n="countdown-ijab-btn">Ijab Qabul</button>
+        <button class="countdown-tab" data-event="resepsi" data-i18n="countdown-resepsi-btn">Resepsi</button>
+      </div>
+
+      <div class="countdown-display" id="countdown-display">
+        <div class="countdown-unit">
+          <span class="countdown-num" id="days">0</span>
+          <span class="countdown-label" data-i18n="days-label">Hari</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="hours">0</span>
+          <span class="countdown-label" data-i18n="hours-label">Jam</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="minutes">0</span>
+          <span class="countdown-label" data-i18n="minutes-label">Menit</span>
+        </div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-unit">
+          <span class="countdown-num" id="seconds">0</span>
+          <span class="countdown-label" data-i18n="seconds-label">Detik</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Livestream Section -->
+  <section id="livestream">
+    <div class="section-inner">
+      <h2 class="section-title" data-i18n="livestream-title">Siaran Langsung</h2>
+      <p class="section-label" data-i18n="livestream-label">Saksikan Acara Kami Secara Online</p>
+
+      <!-- Tabs for Indonesian language livestream -->
+      <div class="livestream-tabs" id="livestream-tabs-id">
+        <button class="livestream-tab active" data-livestream="ijab" data-i18n="livestream-ijab-tab">Ijab Qabul (12 Juni)</button>
+        <button class="livestream-tab" data-livestream="resepsi" data-i18n="livestream-resepsi-tab">Resepsi (13 Juni)</button>
+      </div>
+
+      <!-- Ijab Qabul Livestream -->
+      <div class="livestream-box active" id="livestream-ijab">
+        <p class="livestream-desc" data-i18n="ijab-livestream-desc">
+          Saksikan momen istimewa Ijab Qabul kami secara langsung!
+        </p>
+        <a href="https://youtu.be/YOUR_IJAB_LINK" target="_blank" class="livestream-btn">
+          ▶ <span data-i18n="watch-now">Tonton Sekarang</span>
+        </a>
+      </div>
+
+      <!-- Resepsi Livestream -->
+      <div class="livestream-box" id="livestream-resepsi">
+        <p class="livestream-desc" data-i18n="resepsi-livestream-desc">
+          Bergabunglah dengan kami dalam perayaan resepsi yang meriah!
+        </p>
+        <a href="https://youtu.be/YOUR_RESEPSI_LINK" target="_blank" class="livestream-btn">
+          ▶ <span data-i18n="watch-now">Tonton Sekarang</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wishes Section -->
+  <section id="wishes">
+    <div class="section-inner">
+      <h2 class="section-title" data-i18n="wishes-title">Doa & Ucapan</h2>
+      <p class="section-label" data-i18n="wishes-label">Bagikan Kebahagiaan Kami</p>
+      
+      <form class="wish-form" id="wish-form">
+        <input 
+          type="text" 
+          class="wish-input" 
+          placeholder="Nama Anda" 
+          id="wish-name"
+          data-i18n-placeholder="wish-name-placeholder"
+          required
+        >
+        <textarea 
+          class="wish-textarea" 
+          placeholder="Tulis doa & ucapan terbaik untuk kami"
+          id="wish-text"
+          data-i18n-placeholder="wish-text-placeholder"
+          required
+        ></textarea>
+        <button type="submit" class="wish-submit" data-i18n="wish-submit">Kirim Ucapan</button>
+      </form>
+
+      <div class="wishes-list" id="wishes-list"></div>
+      <div class="pagination-controls" id="pagination" style="display: none;">
+        <button class="page-btn" id="prev-page">← <span data-i18n="prev">Sebelumnya</span></button>
+        <span id="page-info" style="color: var(--cream); font-size: 0.75rem;"></span>
+        <button class="page-btn" id="next-page"><span data-i18n="next">Berikutnya</span> →</button>
+      </div>
+    </div>
+  </section>
+</main>
 
 <script>
-// ── SCROLL RESTORATION FIX ──
-// Tells the browser not to jump down the page on refresh
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-// Forces the page back to the very top when reloaded
-window.scrollTo(0, 0);
+  // Translation content
+  const translations = {
+    id: {
+      'quran-ref': 'Q.S. AN-NUR (24) : 32',
+      'quran-translation': 'Dan kawinkanlah orang-orang yang sendiri diantara kamu dan orang-orang yang layak (menikah) dari hamba-hamba sahayamu yang laki-laki dan hamba-hamba sahayamu yang perempuan. Jika mereka miskin Allah akan memampukan mereka dengan karunia-Nya. Dan Allah Maha Luas (pemberian-Nya) lagi Maha Mengetahui.',
+      'doa': 'Semoga shalawat dan salam senantiasa tercurah kepada Nabi Muhammad Shallallahu \'alaihi wa sallam, keluarganya, dan semua pengikutnya hingga akhir zaman.',
+      'couple-title': 'Mempelai',
+      'couple-label': 'Pasangan Bahagia',
+      'son-of': 'Putra dari',
+      'daughter-of': 'Putri dari',
+      'story-title': 'Cerita Kami',
+      'story-label': 'Dari Kenalan Hingga Selamanya',
+      'timeline-year': 'Tahun',
+      'timeline-1-title': 'Bertemu',
+      'timeline-1-desc': 'Kisah dimulai dengan satu pertemuan istimewa...',
+      'timeline-2-title': 'Jatuh Cinta',
+      'timeline-2-desc': 'Setiap hari bersama semakin berarti dan berharga...',
+      'timeline-3-title': 'Momen Spesial',
+      'timeline-3-desc': 'Sebuah pertanyaan yang mengubah segalanya...',
+      'timeline-4-title': 'Selamanya',
+      'timeline-4-desc': 'Kini saatnya memulai petualangan bersama selamanya...',
+      'events-title': 'Acara Kami',
+      'ijab-qabul': 'Ijab Qabul',
+      'resepsi': 'Resepsi',
+      'event-time': 'Hari & Jam:',
+      'ijab-date': 'Kamis, 12 Juni 2025 | 14:00 - 15:30',
+      'resepsi-date': 'Jumat, 13 Juni 2025 | 18:00 - 23:00',
+      'event-location': 'Lokasi:',
+      'ijab-location': 'Gedung Seruni, Jl. Imam Bonjol No. 35, Jakarta',
+      'resepsi-location': 'Ballroom Grand Indonesia, Jl. Budi Utomo No. 10, Jakarta',
+      'map-btn': 'Lihat Lokasi',
+      'countdown-label': 'Hitung Mundur',
+      'countdown-ijab-btn': 'Ijab Qabul',
+      'countdown-resepsi-btn': 'Resepsi',
+      'days-label': 'Hari',
+      'hours-label': 'Jam',
+      'minutes-label': 'Menit',
+      'seconds-label': 'Detik',
+      'livestream-title': 'Siaran Langsung',
+      'livestream-label': 'Saksikan Acara Kami Secara Online',
+      'livestream-ijab-tab': 'Ijab Qabul (12 Juni)',
+      'livestream-resepsi-tab': 'Resepsi (13 Juni)',
+      'ijab-livestream-desc': 'Saksikan momen istimewa Ijab Qabul kami secara langsung!',
+      'resepsi-livestream-desc': 'Bergabunglah dengan kami dalam perayaan resepsi yang meriah!',
+      'watch-now': 'Tonton Sekarang',
+      'wishes-title': 'Doa & Ucapan',
+      'wishes-label': 'Bagikan Kebahagiaan Kami',
+      'wish-name-placeholder': 'Nama Anda',
+      'wish-text-placeholder': 'Tulis doa & ucapan terbaik untuk kami',
+      'wish-submit': 'Kirim Ucapan',
+      'prev': 'Sebelumnya',
+      'next': 'Berikutnya'
+    },
+    en: {
+      'quran-ref': 'Q.S. AN-NUR (24) : 32',
+      'quran-translation': 'And marry the unmarried among you and the righteous among your male slaves and female slaves. If they should be poor, Allah will enrich them from His bounty. And Allah is all-encompassing and Knowing.',
+      'doa': 'May the blessings and peace be upon the Prophet Muhammad, his family, and all his followers until the end of time.',
+      'couple-title': 'The Couple',
+      'couple-label': 'A Happy Pair',
+      'son-of': 'Son of',
+      'daughter-of': 'Daughter of',
+      'story-title': 'Our Story',
+      'story-label': 'From Meeting to Forever',
+      'timeline-year': 'Year',
+      'timeline-1-title': 'We Met',
+      'timeline-1-desc': 'A story that began with a special encounter...',
+      'timeline-2-title': 'Fell in Love',
+      'timeline-2-desc': 'Every day together became more meaningful and valuable...',
+      'timeline-3-title': 'A Special Moment',
+      'timeline-3-desc': 'A question that changed everything...',
+      'timeline-4-title': 'Forever',
+      'timeline-4-desc': 'Now it\'s time to start an adventure together forever...',
+      'events-title': 'Our Events',
+      'ijab-qabul': 'Ijab Qabul',
+      'resepsi': 'Reception',
+      'event-time': 'Date & Time:',
+      'ijab-date': 'Thursday, June 12, 2025 | 14:00 - 15:30',
+      'resepsi-date': 'Friday, June 13, 2025 | 18:00 - 23:00',
+      'event-location': 'Location:',
+      'ijab-location': 'Gedung Seruni, Jl. Imam Bonjol No. 35, Jakarta',
+      'resepsi-location': 'Ballroom Grand Indonesia, Jl. Budi Utomo No. 10, Jakarta',
+      'map-btn': 'View Location',
+      'countdown-label': 'Countdown',
+      'countdown-ijab-btn': 'Ijab Qabul',
+      'countdown-resepsi-btn': 'Reception',
+      'days-label': 'Days',
+      'hours-label': 'Hours',
+      'minutes-label': 'Minutes',
+      'seconds-label': 'Seconds',
+      'livestream-title': 'Live Stream',
+      'livestream-label': 'Watch Our Events Online',
+      'livestream-ijab-tab': 'Ijab Qabul (June 12)',
+      'livestream-resepsi-tab': 'Reception (June 13)',
+      'ijab-livestream-desc': 'Watch our special Ijab Qabul moment live!',
+      'resepsi-livestream-desc': 'Join us for our festive reception celebration!',
+      'watch-now': 'Watch Now',
+      'wishes-title': 'Wishes & Prayers',
+      'wishes-label': 'Share Our Happiness',
+      'wish-name-placeholder': 'Your Name',
+      'wish-text-placeholder': 'Write your best wishes and prayers for us',
+      'wish-submit': 'Send Wishes',
+      'prev': 'Previous',
+      'next': 'Next'
+    }
+  };
 
-// ── PERSONALIZED GUEST GREETING & AUTO-LANGUAGE ──
-document.addEventListener("DOMContentLoaded", () => {
-  // Look at the web address for parameters
-  const urlParams = new URLSearchParams(window.location.search);
-  const guest = urlParams.get('to');
-  const langPref = urlParams.get('lang'); // Looks for &lang=en, id, or tr
+  let currentLanguage = 'id';
+  let currentPage = 1;
+  let wishesList = JSON.parse(localStorage.getItem('wishes')) || [];
 
-  const unpersonalizedBtns = document.getElementById('unpersonalized-buttons');
-  const personalizedBtn = document.getElementById('personalized-button');
-
-  // 1. Language Logic
-  if (langPref && translations[langPref]) {
-    // If language is in the link: Set it, hide the 3 buttons, show the 1 "Open" button
-    setLang(langPref); 
-    unpersonalizedBtns.style.display = 'none';
-    personalizedBtn.style.display = 'flex';
-  } else {
-    // If no language in link: Default to ID, but keep the 3 buttons so they can choose
-    setLang('id');
-  }
-
-  // 2. Guest Name Logic
-  if (guest) {
-    const greetingBox = document.getElementById('guest-greeting-box');
-    const nameDisplay = document.getElementById('guest-name-display');
-    
-    greetingBox.style.display = 'block';
-    // Clean up the name (removes %20 or + symbols)
-    nameDisplay.innerText = guest.replace(/\+/g, ' ');
-  }
-});
-
-// ── TRANSLATIONS ──
-const translations = {
-  id: {
-    'guest-greet': 'Kepada Yth. ',
-    'cover-subtitle': 'Undangan Pernikahan',
-    'open-btn': 'Buka Undangan',
-    'quran-label': 'Firman Allah SWT',
-    'quran-ref-id': "QS. Ar-Rum : 21",
-    'quran-trans': '"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."',
-    'doa-nikah': 'Ya Allah, satukanlah hati kami dalam ikatan cinta yang Engkau ridhai.<br>Jadikanlah pernikahan ini sebagai awal dari ibadah panjang kami kepada-Mu.<br>Limpahkan keberkahan, kesetiaan, dan kasih sayang di antara kami.<br><em>Aamiin Ya Rabbal \'Aalamiin.</em>',
-    'couple-label': 'Mempelai',
-    'couple-title': 'Dengan Penuh Rasa Syukur',
-    'daughter-of': 'Putri dari',
-    'son-of': 'Putra dari',
-    'story-label': 'Perjalanan Cinta',
-    'timeline-year-id1': 'Awal Segalanya',
-    'timeline-year-id2': 'Momen Spesial',
-    'timeline-year-id3': 'Lintas Benua',
-    'timeline-year-id4': 'Selamanya',
-    'story-title': 'Cerita Kami',
-    'story1-title': 'Pertama Bertemu',
-    'story1-desc': 'Berawal dari teman diskusi belajar, berlanjut ke obrolan tentang perjalanan ke Norwegia, cerita “toast fairy”, hingga “kencan pertama” yang tak biasa di kuburan Enschede—dari sanalah kisah kami dimulai.',
-    'story2-title': 'Mulai Bersama',
-    'story2-desc': 'Bepergian bersama telah menjadi bagian yang kami tekuni; kami selalu meluangkan waktu untuk berdua, menjelajahi dunia, dan mengumpulkan cerita di setiap langkah perjalanan kami.',
-    'story3-title': '4 Jam Beda Waktu',
-    'story3-desc': 'Dua tahun dipisahkan jarak dan waktu, namun segalanya terasa ringan ketika dijalani dengan orang yang tepat.',
-    'story4-title': 'Ya, Selamanya.',
-    'story4-desc': 'Dan kini, saatnya kami menjadikan segalanya resmi — dengan doa, cinta, dan keluarga di sisi kami.',
-    'events-label': 'Rangkaian Acara',
-    'events-title': 'Mohon Do\'a Restu',
-    'event1-label': 'Malam Henna',
-    'event2-label': 'Ijab Kabul & Perayaan',
-    'date-label': 'Hari dan Tanggal',
-    'time-label': 'Waktu',
-    'venue-label': 'Lokasi',
-    'map-btn': '🗺 Buka Maps',
-    'countdown-label': 'Menghitung Hari',
-    'countdown-title': 'Segera Tiba',
-    'kina-tab': 'Kına Gecesi',
-    'nikah-tab': 'Nikah',
-    'days': 'Hari',
-    'hours': 'Jam',
-    'minutes': 'Menit',
-    'seconds': 'Detik',
-    'stream-label': 'Saksikan Bersama',
-    'stream-title': 'Siaran Langsung',
-    'stream-desc': 'Tidak bisa hadir langsung? Kami tetap ingin kamu menjadi bagian dari hari bahagia ini.<br>Saksikan momen sakral kami secara langsung melalui tautan berikut.',
-    'wishes-label': 'Doa & Ucapan',
-    'wishes-title': 'Kirim Doa untuk Kami',
-    'wish-name-placeholder': 'Nama kamu...',
-    'wish-message-placeholder': 'Doa & ucapan untuk Salsa & Serhat...',
-    'wish-submit': 'Kirim Doa 🌿',
-    'footer-note': '13 Juni 2026 · Konya, Türkiye · Dengan penuh cinta',
-    'wish-loading': 'Memuat doa... 🌿',
-    'wish-load-error': 'Gagal memuat doa.',
-    'wish-sending': 'Mengirim... ⏳',
-    'wish-send-error': 'Maaf, gagal mengirim doa. Silakan coba lagi.',
-    'wish-empty': 'Belum ada ucapan. Jadilah yang pertama! ✨',
-    'cover-subtitle-date': '13 Juni 2026 · Konya, Türkiye',
-    'nikkahdate-trans': 'Sabtu, 13 Juni 2026',
-    'kinadate-trans': 'Kamis, 11 Juni 2026',
-    'close-relative': 'Hanya Keluarga Dekat',
-    'time-id': '22:30 WIB',
-    'stream-note': '*Link akan diaktifkan pada hari pelaksanaan',
-    'countdown-date-label': '13 Juni 2026 · Ijab Kabul dan Perayaan',
-    'gelin-alma-label': 'Prosesi Penjemputan Mempelai Wanita',
-    'gelin-alma-time': '21.30 WIB'
-  },
-  en: {
-    'guest-greet': 'Dear, ',
-    'cover-subtitle': 'Wedding Invitation',
-    'open-btn': 'Open Invitation',
-    'quran-label': 'The Word of Allah SWT',
-    'quran-ref-id': "Qur’an, Ar-Rum 21",
-    'quran-trans': 'And among His signs is that He created for you spouses from among yourselves so that you may find tranquility in them, and He has placed between you affection and mercy. Indeed, in that are signs for people who reflect.',
-    'doa-nikah': 'O Allah, unite our hearts in a bond of love that You are pleased with.<br>Make this marriage the beginning of our lifelong devotion to You.<br>Grant us blessings, loyalty, and affection between us.<br><em>Aamiin Ya Rabbal \'Aalamiin.</em>',
-    'couple-label': 'The Couple',
-    'couple-title': 'With Endless Gratitude',
-    'daughter-of': 'Daughter of',
-    'son-of': 'Son of',
-    'story-label': 'Our Love Journey',
-    'story-title': 'Our Story',
-    'timeline-year-id1': 'The Beginning',
-    'timeline-year-id2': 'Special Moments',
-    'timeline-year-id3': 'Across the Continent',
-    'timeline-year-id4': 'Forever',
-    'story1-title': 'Starting Together',
-    'story1-desc': 'What started as study discussions grew into conversations about a trip to Norway, stories of the “toast fairy,” and even an unconventional first date at a cemetery in Enschede—that’s where our story began.',
-    'story2-title': 'Walking Together',
-    'story2-desc': 'We’ve turned traveling together into a passion; always making time for ourselves to explore the world side by side, discover new places, and collect our own stories in every journey.',
-    'story3-title': '4 Hours Apart',
-    'story3-desc': 'Two years apart, across continents and time zones, yet everything felt lighter with the right person by our side.',
-    'story4-title': 'Yes, Forever.',
-    'story4-desc': 'And now, it\'s time to make it official — with prayers, love, and family by our side.',
-    'events-label': 'Our Celebration',
-    'events-title': 'You Are Invited',
-    'event1-label': 'Henna Night',
-    'event2-label': 'Wedding & Celebration',
-    'date-label': 'Day and Date',
-    'time-label': 'Time',
-    'venue-label': 'Venue',
-    'map-btn': '🗺 Open Maps',
-    'countdown-label': 'Counting Down',
-    'countdown-title': 'Coming Soon',
-    'kina-tab': 'Kına Gecesi',
-    'nikah-tab': 'Nikkah',
-    'days': 'Days',
-    'hours': 'Hours',
-    'minutes': 'Minutes',
-    'seconds': 'Seconds',
-    'stream-label': 'Watch Together',
-    'stream-title': 'Live Streaming',
-    'stream-desc': 'Can\'t make it in person? We still want you to be part of our special day.<br>Watch our sacred moment live through the link below.',
-    'wishes-label': 'Prayers & Wishes',
-    'wishes-title': 'Send Your Blessings',
-    'wish-name-placeholder': 'Your name...',
-    'wish-message-placeholder': 'Your prayers & wishes for Salsa & Serhat...',
-    'wish-submit': 'Send Blessing 🌿',
-    'footer-note': '13 June 2026 · Konya, Türkiye · With all our love',
-    'wish-loading': 'Loading wishes... 🌿',
-    'wish-load-error': 'Failed to load wishes.',
-    'wish-sending': 'Sending... ⏳',
-    'wish-send-error': 'Sorry, failed to send wish. Please try again.',
-    'wish-empty': 'No wishes yet. Be the first! ✨',
-    'cover-subtitle-date': '13 June 2026 · Konya, Türkiye',
-    'nikkahdate-trans': 'Saturday, 13 June 2026',
-    'kinadate-trans': 'Thursday, 11 June 2026',
-    'close-relative': 'Only Close Relatives',
-    'time-id': '6:30pm UTC+3 (10:30pm UTC+7)',
-    'stream-note': '*The link will be activated on the day of the event',
-    'countdown-date-label': '13 Haziran 2026 · Wedding and Celebration',
-    'gelin-alma-label': 'Picking Up the Bride',
-    'gelin-alma-time': '5:30pm UTC+3 (9:30pm UTC+7)'
-  },
-  tr: {
-    'guest-greet': 'Merhaba ',
-    'cover-subtitle': 'Düğün Davetiyesi',
-    'open-btn': 'Daveti Aç',
-    'quran-label': "Allah'ın Kelamı",
-    'quran-ref-id': 'Rum Suresi 21. Ayet',
-    'quran-trans': 'Kendileriyle huzur bulmanız için size kendi cinsinizden eşler yaratması ve aranıza sevgi ile merhamet koyması, O’nun ayetlerindendir. Şüphesiz bunda düşünen bir toplum için ibretler vardır.',
-    'doa-nikah': 'Allah’ım, kalplerimizi razı olacağın bir sevgi bağıyla birleştir.<br>Bu evliliği Sana olan kulluğumuzun hayırlı bir başlangıcı eyle.<br>Aramıza bereket, sadakat ve şefkat ihsan eyle.<br><em>Âmin, ya Rabbel \'âlemin.</em>',
-    'couple-label': 'Gelin ve Damat',
-    'couple-title': 'Sonsuz Şükranla',
-    'daughter-of': 'Kızı',
-    'son-of': 'Oğlu',
-    'story-label': 'Aşk Yolculuğumuz',
-    'story-title': 'Hikayemiz',
-    'timeline-year-id1': 'Başlangıç',
-    'timeline-year-id2': 'Özel Anlar',
-    'timeline-year-id3': 'Kıtalar Boyunca',
-    'timeline-year-id4': 'Sonsuza Dek',
-    'story1-title': 'İlk Buluşma',
-    'story1-desc': 'Çalışma sohbetleriyle başlayan o küçük anlar; Norveç hayalleri kurduğumuz planlara, “toast fairy” gülüşlerine ve Enschede’de bir mezarlıkta geçen o sıra dışı ilk buluşmaya dönüştü. Fark etmeden, adım adım, hikâyemiz tam da böyle yazılmaya başladı.',
-    'story2-title': 'Birlikte Başladık',
-    'story2-desc': 'Birlikte seyahat etmeyi bir tutkuya dönüştürdük; dünyayı yan yana keşfetmek, yeni yerler görmek ve her yolculukta bize ait hikâyeler biriktirmek için her zaman kendimize zaman ayırıyoruz.',
-    'story3-title': '4 Saatlik Zaman Farkı',
-    'story3-desc': 'İki yıl boyunca farklı zamanlarda yaşadık; ama kalplerimiz hep aynı anda attı. Mesafeler bizi ayırmadı, aksine daha da yakınlaştırdı.',
-    'story4-title': 'Ebediyen...',
-    'story4-desc': 'Ve şimdi bu hikâyeyi resmiyete dökme zamanı — dualarımızla, sevgimizle ve yanımızdaki ailelerimizle birlikte.',
-    'events-label': 'Kutlama Programı',
-    'events-title': 'Davetlisiniz',
-    'event1-label': 'Kına Gecesi',
-    'event2-label': 'Nikkah & Düğün',
-    'date-label': 'Gün ve Tarih',
-    'time-label': 'Saat',
-    'venue-label': 'Mekan',
-    'map-btn': '🗺 Haritayı Aç',
-    'countdown-label': 'Geri Sayım',
-    'countdown-title': 'Çok Yakında',
-    'kina-tab': 'Kına Gecesi',
-    'nikah-tab': 'Nikah',
-    'days': 'Gün',
-    'hours': 'Saat',
-    'minutes': 'Dakika',
-    'seconds': 'Saniye',
-    'stream-label': 'Birlikte İzleyin',
-    'stream-title': 'Canlı Yayın',
-    'stream-desc': 'Aramızda olamıyor musunuz? Sizi yine de bu mutlu günümüzde yanımızda hissetmek isteriz.<br>Bu mutlu anımıza aşağıdaki bağlantı üzerinden canlı olarak katılabilirsiniz.',
-    'wishes-label': 'Dua ve Dilekler',
-    'wishes-title': 'Dua Gönder',
-    'wish-name-placeholder': 'Adın...',
-    'wish-message-placeholder': 'Salsa ve Serhat için dua ve dilekleriniz...',
-    'wish-submit': 'Dua Gönder 🌿',
-    'footer-note': "13 Haziran 2026 · Konya, Türkiye · Tüm sevgimizle",
-    'wish-loading': 'Dilekler yükleniyor... 🌿',
-    'wish-load-error': 'Dilekler yüklenemedi.',
-    'wish-sending': 'Gönderiliyor... ⏳',
-    'wish-send-error': 'Üzgünüz, dilek gönderilemedi. Lütfen tekrar deneyin.',
-    'wish-empty': 'Henüz dilek yok. İlk siz olun! ✨',
-    'cover-subtitle-date': '13 Haziran 2026 · Konya, Türkiye',
-    'nikkahdate-trans': 'Cumartesi, 13 Haziran 2026',
-    'kinadate-trans': 'Perşembe, 11 Haziran 2026',
-    'close-relative': 'Sadece Yakın Aile',
-    'time-id': '18:30',
-    'stream-note': '*Bağlantı, etkinlik günü aktif hale getirilecektir',
-    'countdown-date-label': '13 Haziran 2026 · Nikkah & Düğün',
-    'gelin-alma-label': 'Gelin Alma',
-    'gelin-alma-time': '17:30'
-  }
-};
-
-let currentLang = 'id';
-
-function setLang(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
-
-  const t = translations[lang];
-
-  // Update all data-i18n elements
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key]) el.innerHTML = t[key];
-  });
-
-  // Placeholders
-  document.querySelectorAll('[data-placeholder-i18n]').forEach(el => {
-    const key = el.getAttribute('data-placeholder-i18n');
-    if (t[key]) el.placeholder = t[key];
-  });
-
-  // Special: quran translation & doa
-  if (document.getElementById('quran-trans')) {
-    document.getElementById('quran-trans').innerHTML = t['quran-trans'] || '';
-  }
-  if (document.getElementById('doa-nikah')) {
-    document.getElementById('doa-nikah').innerHTML = t['doa-nikah'] || '';
-  }
-
-}
-
-// ── AUDIO CONTROL LOGIC ──
-let isPlaying = false;
-
-function toggleAudio() {
-  const audio = document.getElementById('bg-audio');
-  const audioBtn = document.getElementById('audio-control');
-
-  if (isPlaying) {
-    audio.pause();
-    audioBtn.innerHTML = '🔇';
-    isPlaying = false;
-  } else {
-    audio.play();
-    audioBtn.innerHTML = '🎵';
-    isPlaying = true;
-  }
-}
-
-function openInvitation(lang) {
-  // 1. Set the language from the button clicked
-  setLang(lang);
-
-  const main = document.getElementById('main');
-  const switcher = document.getElementById('lang-switcher');
-  const audioBtn = document.getElementById('audio-control');
-
-  // 2. Unlock the scrolling so the user can go down
-  document.body.classList.remove('locked');
-
-  // 3. Make main content, language switcher, and audio button visible
-  main.classList.add('visible');
-  switcher.classList.add('visible');
-  audioBtn.classList.add('visible'); // SHOWS THE NEW BUTTON
-
-  // 4. Smooth scroll down to the Quran section (main body)
-  main.scrollIntoView({ behavior: 'smooth' });
-  
-  // 5. Play audio safely
-  const audio = document.getElementById('bg-audio');
-  audio.volume = 0.5; // Optional: set volume to 50% so it's not too loud
-  
-  audio.play().then(() => {
-    // If the browser allows it to play, set state to true and show music note
-    isPlaying = true;
-    audioBtn.innerHTML = '🎵';
-  }).catch(e => {
-    // If Safari/Chrome blocks it, don't break the site. Just show it as muted.
-    console.log("Audio play prevented by browser:", e);
-    isPlaying = false;
-    audioBtn.innerHTML = '🔇'; 
-  });
-
-  // 6. Start features
-  initScrollReveal();
-  startCountdown();
-  
-  // Only load wishes if they haven't been loaded yet
-  if (wishes.length === 0) {
-      loadWishesFromDatabase();
-  }
-}
-
-// ── FLOATING LEAVES ──
-function createLeaves() {
-  const cover = document.getElementById('cover');
-  const leafEmojis = ['🍃', '🌿', '🍂', '🌱'];
-  for (let i = 0; i < 12; i++) {
-    const leaf = document.createElement('div');
-    leaf.className = 'leaf';
-    leaf.textContent = leafEmojis[Math.floor(Math.random() * leafEmojis.length)];
-    leaf.style.left = Math.random() * 100 + '%';
-    leaf.style.animationDuration = (8 + Math.random() * 10) + 's';
-    leaf.style.animationDelay = (Math.random() * 8) + 's';
-    leaf.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
-    cover.appendChild(leaf);
-  }
-}
-createLeaves();
-
-// ── SCROLL REVEAL ──
-function initScrollReveal() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
+  // Language switching
+  function setLanguage(lang) {
+    currentLanguage = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      el.textContent = translations[lang][key] || el.textContent;
     });
-  }, { threshold: 0.15 });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      el.placeholder = translations[lang][key] || el.placeholder;
+    });
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  }
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-}
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      setLanguage(e.target.dataset.lang);
+    });
+  });
 
-// ── CARROUSEL ──
-const carousels = document.querySelectorAll('.carousel-wrapper');
+  // Livestream tabs
+  document.querySelectorAll('.livestream-tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      document.querySelectorAll('.livestream-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.livestream-box').forEach(box => box.classList.remove('active'));
+      e.target.classList.add('active');
+      document.getElementById('livestream-' + e.target.dataset.livestream).classList.add('active');
+    });
+  });
 
-carousels.forEach(wrapper => {
-  const container = wrapper.querySelector('.timeline-photo-container');
-  const leftArrow = wrapper.querySelector('.left-arrow');
-  const rightArrow = wrapper.querySelector('.right-arrow');
+  // Countdown timer
+  function updateCountdown(eventDate) {
+    const now = new Date().getTime();
+    const distance = new Date(eventDate).getTime() - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
 
-  rightArrow.addEventListener('click', () => {
-    // Add the 10px gap to the scroll distance so it lands perfectly
-    const scrollDistance = container.clientWidth + 10; 
+  document.querySelectorAll('.countdown-tab').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      document.querySelectorAll('.countdown-tab').forEach(t => t.classList.remove('active'));
+      e.target.classList.add('active');
+      const eventDate = e.target.dataset.event === 'ijab' ? 'June 12, 2025' : 'June 13, 2025';
+      updateCountdown(eventDate);
+    });
+  });
 
-    if (Math.ceil(container.scrollLeft + container.clientWidth) >= container.scrollWidth) {
-      container.scrollTo({ left: 0, behavior: 'smooth' });
+  // Initial countdown
+  updateCountdown('June 12, 2025');
+  setInterval(() => updateCountdown('June 12, 2025'), 1000);
+
+  // Wishes functionality
+  document.getElementById('wish-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('wish-name').value;
+    const text = document.getElementById('wish-text').value;
+    wishesList.unshift({ name, text, date: new Date().toLocaleDateString() });
+    localStorage.setItem('wishes', JSON.stringify(wishesList));
+    document.getElementById('wish-form').reset();
+    currentPage = 1;
+    displayWishes();
+  });
+
+  function displayWishes() {
+    const itemsPerPage = 5;
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedWishes = wishesList.slice(start, end);
+    
+    document.getElementById('wishes-list').innerHTML = paginatedWishes.map(wish => `
+      <div style="border-left: 3px solid var(--gold); padding-left: 1rem; opacity: 0.9;">
+        <p style="font-weight: 600; color: var(--light-gold); margin-bottom: 0.3rem;">${wish.name}</p>
+        <p style="color: rgba(245,239,230,0.8); margin-bottom: 0.2rem;">${wish.text}</p>
+        <p style="font-size: 0.65rem; color: rgba(201,168,76,0.6);">${wish.date}</p>
+      </div>
+    `).join('');
+
+    const totalPages = Math.ceil(wishesList.length / itemsPerPage);
+    if (totalPages > 1) {
+      document.getElementById('pagination').style.display = 'flex';
+      document.getElementById('page-info').textContent = `${currentPage} / ${totalPages}`;
     } else {
-      container.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+      document.getElementById('pagination').style.display = 'none';
+    }
+  }
+
+  document.getElementById('prev-page').addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayWishes();
+      document.getElementById('wishes-list').scrollIntoView({ behavior: 'smooth' });
     }
   });
 
-  leftArrow.addEventListener('click', () => {
-    // Add the 10px gap here as well
-    const scrollDistance = container.clientWidth + 10;
-
-    if (container.scrollLeft <= 0) {
-      container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
-    } else {
-      container.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
+  document.getElementById('next-page').addEventListener('click', () => {
+    const totalPages = Math.ceil(wishesList.length / 5);
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayWishes();
+      document.getElementById('wishes-list').scrollIntoView({ behavior: 'smooth' });
     }
   });
-});
 
-// ── COUNTDOWN ──
-const targetDate = new Date('2026-06-13T19:00:00+03:00'); // Istanbul time (UTC+3)
-let countdownInterval;
+  displayWishes();
 
-function startCountdown() {
-  if (countdownInterval) clearInterval(countdownInterval);
-  countdownInterval = setInterval(updateCountdown, 1000);
-  updateCountdown();
-}
+  // Audio control
+  const audio = document.getElementById('bgm');
+  const audioBtn = document.getElementById('audio-toggle');
+  let isPlaying = false;
 
-function updateCountdown() {
-  const now = new Date();
-  const diff = targetDate - now;
+  document.querySelectorAll('.open-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('cover').style.display = 'none';
+      document.getElementById('main').classList.add('visible');
+      document.getElementById('lang-switcher').classList.add('visible');
+      audioBtn.classList.add('visible');
+      audio.play().catch(() => {});
+      isPlaying = true;
+    });
+  });
 
-  // If the wedding day has passed, lock the countdown at zero
-  if (diff <= 0) {
-    document.getElementById('cd-days').textContent = '00';
-    document.getElementById('cd-hours').textContent = '00';
-    document.getElementById('cd-minutes').textContent = '00';
-    document.getElementById('cd-seconds').textContent = '00';
-    return;
-  }
+  audioBtn.addEventListener('click', () => {
+    if (isPlaying) {
+      audio.pause();
+      audioBtn.textContent = '🔇';
+    } else {
+      audio.play();
+      audioBtn.textContent = '🔊';
+    }
+    isPlaying = !isPlaying;
+  });
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-  document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
-  document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-  document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
-  document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
-}
-
-// ── WISHES ──
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwTl56_NrUKe3CeOkhUHXbhDxQaRZfjezOgkrrX9QhT4aZOEGC0ULG462wOKuJ89NrDnA/exec'; 
-
-let wishes = [];
-let currentPage = 1;         // Starts on page 1
-const wishesPerPage = 5;     // Shows 5 messages per page
-
-async function loadWishesFromDatabase() {
-  const container = document.getElementById('wishes-list');
-  container.innerHTML = `<p data-i18n="wish-loading" style="text-align:center; color:var(--text-light); font-size:0.8rem;">${translations[currentLang]['wish-loading']}</p>`;
-  
-  try {
-    const response = await fetch(SCRIPT_URL);
-    const data = await response.json();
-    wishes = data;
-    renderWishes();
-  } catch (error) {
-    console.error('Error fetching wishes:', error);
-    container.innerHTML = `<p data-i18n="wish-load-error" style="text-align:center; color:var(--terracotta); font-size:0.8rem;">${translations[currentLang]['wish-load-error']}</p>`;
-  }
-}
-
-async function submitWish() {
-  const nameInput = document.getElementById('wish-name');
-  const messageInput = document.getElementById('wish-message');
-  const submitBtn = document.querySelector('.wish-submit');
-
-  const name = nameInput.value.trim();
-  const message = messageInput.value.trim();
-
-  if (!name || !message) return;
-
-  submitBtn.innerText = translations[currentLang]['wish-sending'];
-  submitBtn.disabled = true;
-  submitBtn.style.opacity = '0.7';
-
-  const formData = new FormData();
-  formData.append('name', name);
-  formData.append('message', message);
-
-  try {
-    await fetch(SCRIPT_URL, { method: 'POST', body: formData });
-
-    wishes.unshift({ name, message });
-    currentPage = 1; // Instantly jump back to page 1 to see the new message!
-    renderWishes();
-
-    nameInput.value = '';
-    messageInput.value = '';
-  } catch (error) {
-    alert(translations[currentLang]['wish-send-error']);
-  } finally {
-    submitBtn.innerText = translations[currentLang]['wish-submit'];
-    submitBtn.disabled = false;
-    submitBtn.style.opacity = '1';
-  }
-}
-
-function renderWishes() {
-  const container = document.getElementById('wishes-list');
-  const pagination = document.getElementById('wishes-pagination');
-  
-  if (wishes.length === 0) {
-    container.innerHTML = `<p data-i18n="wish-empty" style="text-align:center; color:var(--text-light); font-size:0.8rem;">${translations[currentLang]['wish-empty']}</p>`;
-    pagination.style.display = 'none';
-    return;
-  }
-
-  // --- Pagination Math ---
-  const totalPages = Math.ceil(wishes.length / wishesPerPage);
-  
-  // Protect against weird page numbers
-  if (currentPage > totalPages) currentPage = totalPages;
-  if (currentPage < 1) currentPage = 1;
-
-  // Slice the array to get only the 5 messages for the current page
-  const startIndex = (currentPage - 1) * wishesPerPage;
-  const endIndex = startIndex + wishesPerPage;
-  const currentWishes = wishes.slice(startIndex, endIndex);
-
-  // Render the sliced messages
-  container.innerHTML = currentWishes.map(w => `
-    <div class="wish-item" style="animation: fadeUp 0.4s ease">
-      <p class="wish-name">${escapeHtml(w.name)}</p>
-      <p class="wish-message">"${escapeHtml(w.message)}"</p>
-    </div>
-  `).join('');
-
-  // --- Update Buttons ---
-  if (totalPages > 1) {
-    pagination.style.display = 'flex';
-    document.getElementById('page-info').innerText = `${currentPage} / ${totalPages}`;
-    document.getElementById('prev-page').disabled = currentPage === 1; // Disable left arrow if on page 1
-    document.getElementById('next-page').disabled = currentPage === totalPages; // Disable right arrow if on last page
-  } else {
-    pagination.style.display = 'none'; // Hide buttons if there are 5 or fewer total wishes
-  }
-}
-
-// Function triggered when the user clicks the arrow buttons
-function changePage(direction) {
-  currentPage += direction;
-  renderWishes();
-}
-
-function escapeHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
+  // Set initial language
+  setLanguage('id');
 </script>
 </body>
 </html>
